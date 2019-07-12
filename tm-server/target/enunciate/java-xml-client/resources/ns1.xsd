@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="1.0" targetNamespace="http://exception.tm.bocharova.ru/"
+  xmlns:ns1="http://exception.tm.bocharova.ru/"
+  
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+<xs:element name="AuthenticationSecurityException" type="ns1:AuthenticationSecurityException"/>
+<xs:complexType name="AuthenticationSecurityException">
+  <xs:sequence>
+    <xs:element name="message" type="xs:string" minOccurs="0">
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+</xs:schema>

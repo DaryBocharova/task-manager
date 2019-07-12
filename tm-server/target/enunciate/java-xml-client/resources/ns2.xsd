@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="1.0"
+  
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+  <xs:element name="project" type="project"/>
+  <xs:element name="task" type="task"/>
+  <xs:element name="user" type="user"/>
+<xs:complexType name="abstractEntity" abstract="true">
+ </xs:complexType>
+
+<xs:complexType name="project">
+   <xs:complexContent>
+    <xs:extension base="abstractEntity">
+      <xs:sequence>
+              <xs:element name="dateStart" type="xs:dateTime" minOccurs="0">
+              </xs:element>
+              <xs:element name="dateEnd" type="xs:dateTime" minOccurs="0">
+              </xs:element>
+              <xs:element name="userID" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="status" type="status" minOccurs="0">
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="session">
+   <xs:complexContent>
+    <xs:extension base="abstractEntity">
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="task">
+   <xs:complexContent>
+    <xs:extension base="abstractEntity">
+      <xs:sequence>
+              <xs:element name="projectID" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="dateStart" type="xs:dateTime" minOccurs="0">
+              </xs:element>
+              <xs:element name="dateEnd" type="xs:dateTime" minOccurs="0">
+              </xs:element>
+              <xs:element name="userID" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="status" type="status" minOccurs="0">
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:complexType name="user">
+   <xs:complexContent>
+    <xs:extension base="abstractEntity">
+      <xs:sequence>
+              <xs:element name="login" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="password" type="xs:string" minOccurs="0">
+              </xs:element>
+              <xs:element name="role" type="role" minOccurs="0">
+              </xs:element>
+      </xs:sequence>
+    </xs:extension>
+  </xs:complexContent>
+</xs:complexType>
+
+<xs:simpleType name="role">
+  <xs:restriction base="xs:string">
+     
+    <xs:enumeration value="USER"/>
+ 
+    <xs:enumeration value="ADMINISTRATOR"/>
+  </xs:restriction>
+</xs:simpleType>
+
+<xs:simpleType name="status">
+  <xs:restriction base="xs:string">
+     
+    <xs:enumeration value="PLANNED"/>
+ 
+    <xs:enumeration value="INPROCESS"/>
+ 
+    <xs:enumeration value="DONE"/>
+  </xs:restriction>
+</xs:simpleType>
+
+</xs:schema>

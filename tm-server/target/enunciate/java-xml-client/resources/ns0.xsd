@@ -1,0 +1,1427 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema version="1.0" targetNamespace="http://endpoint.api.tm.bocharova.ru/"
+  xmlns:ns0="http://endpoint.api.tm.bocharova.ru/"
+  
+  xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:import schemaLocation="ns2.xsd"/>
+
+<xs:element name="changeUserPassword" type="ns0:changeUserPassword"/>
+<xs:complexType name="changeUserPassword">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "changeUserPassword".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="id" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="login" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="password" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="role" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="changeUserPasswordResponse" type="ns0:changeUserPasswordResponse"/>
+<xs:complexType name="changeUserPasswordResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "changeUserPassword".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="user" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="closeSession" type="ns0:closeSession"/>
+<xs:complexType name="closeSession">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "closeSession".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="closeSessionResponse" type="ns0:closeSessionResponse"/>
+<xs:complexType name="closeSessionResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "closeSession".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="createProject" type="ns0:createProject"/>
+<xs:complexType name="createProject">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "createProject".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="name" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="description" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="createProjectResponse" type="ns0:createProjectResponse"/>
+<xs:complexType name="createProjectResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "createProject".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="project" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="createTask" type="ns0:createTask"/>
+<xs:complexType name="createTask">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "createTask".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="name" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="description" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="projectId" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="createTaskResponse" type="ns0:createTaskResponse"/>
+<xs:complexType name="createTaskResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "createTask".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="task" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="createUser" type="ns0:createUser"/>
+<xs:complexType name="createUser">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "createUser".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="login" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="password" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="role" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="createUserResponse" type="ns0:createUserResponse"/>
+<xs:complexType name="createUserResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "createUser".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="user" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="editProject" type="ns0:editProject"/>
+<xs:complexType name="editProject">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "editProject".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="id" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="name" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="description" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="status" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="editProjectResponse" type="ns0:editProjectResponse"/>
+<xs:complexType name="editProjectResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "editProject".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="project" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="editTask" type="ns0:editTask"/>
+<xs:complexType name="editTask">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "editTask".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="id" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="name" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="description" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="status" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="editTaskResponse" type="ns0:editTaskResponse"/>
+<xs:complexType name="editTaskResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "editTask".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="task" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="editUserProfile" type="ns0:editUserProfile"/>
+<xs:complexType name="editUserProfile">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "editUserProfile".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="login" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="password" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="editUserProfileResponse" type="ns0:editUserProfileResponse"/>
+<xs:complexType name="editUserProfileResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "editUserProfile".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="user" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="findAllProjectByPartOfNameOrDescription" type="ns0:findAllProjectByPartOfNameOrDescription"/>
+<xs:complexType name="findAllProjectByPartOfNameOrDescription">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "findAllProjectByPartOfNameOrDescription".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="name" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="description" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="findAllProjectByPartOfNameOrDescriptionResponse" type="ns0:findAllProjectByPartOfNameOrDescriptionResponse"/>
+<xs:complexType name="findAllProjectByPartOfNameOrDescriptionResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "findAllProjectByPartOfNameOrDescription".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="project" minOccurs="0" maxOccurs="unbounded">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="findAllProjectByUserId" type="ns0:findAllProjectByUserId"/>
+<xs:complexType name="findAllProjectByUserId">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "findAllProjectByUserId".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="findAllProjectByUserIdResponse" type="ns0:findAllProjectByUserIdResponse"/>
+<xs:complexType name="findAllProjectByUserIdResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "findAllProjectByUserId".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="project" minOccurs="0" maxOccurs="unbounded">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="findAllTaskByPartOfNameOrDescription" type="ns0:findAllTaskByPartOfNameOrDescription"/>
+<xs:complexType name="findAllTaskByPartOfNameOrDescription">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "findAllTaskByPartOfNameOrDescription".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="name" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="description" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="findAllTaskByPartOfNameOrDescriptionResponse" type="ns0:findAllTaskByPartOfNameOrDescriptionResponse"/>
+<xs:complexType name="findAllTaskByPartOfNameOrDescriptionResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "findAllTaskByPartOfNameOrDescription".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="task" minOccurs="0" maxOccurs="unbounded">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="findAllTaskByProjectId" type="ns0:findAllTaskByProjectId"/>
+<xs:complexType name="findAllTaskByProjectId">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "findAllTaskByProjectId".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="id" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="findAllTaskByProjectIdResponse" type="ns0:findAllTaskByProjectIdResponse"/>
+<xs:complexType name="findAllTaskByProjectIdResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "findAllTaskByProjectId".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="task" minOccurs="0" maxOccurs="unbounded">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="findAllTaskByUserId" type="ns0:findAllTaskByUserId"/>
+<xs:complexType name="findAllTaskByUserId">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "findAllTaskByUserId".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="findAllTaskByUserIdResponse" type="ns0:findAllTaskByUserIdResponse"/>
+<xs:complexType name="findAllTaskByUserIdResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "findAllTaskByUserId".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="task" minOccurs="0" maxOccurs="unbounded">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="findAllUser" type="ns0:findAllUser"/>
+<xs:complexType name="findAllUser">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "findAllUser".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="findAllUserResponse" type="ns0:findAllUserResponse"/>
+<xs:complexType name="findAllUserResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "findAllUser".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="user" minOccurs="0" maxOccurs="unbounded">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="findOneProject" type="ns0:findOneProject"/>
+<xs:complexType name="findOneProject">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "findOneProject".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="id" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="findOneProjectResponse" type="ns0:findOneProjectResponse"/>
+<xs:complexType name="findOneProjectResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "findOneProject".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="project" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="findOneTask" type="ns0:findOneTask"/>
+<xs:complexType name="findOneTask">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "findOneTask".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="id" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="findOneTaskResponse" type="ns0:findOneTaskResponse"/>
+<xs:complexType name="findOneTaskResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "findOneTask".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="task" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="findUserByLogin" type="ns0:findUserByLogin"/>
+<xs:complexType name="findUserByLogin">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "findUserByLogin".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="login" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="findUserByLoginResponse" type="ns0:findUserByLoginResponse"/>
+<xs:complexType name="findUserByLoginResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "findUserByLogin".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="user" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="getUserBySession" type="ns0:getUserBySession"/>
+<xs:complexType name="getUserBySession">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "getUserBySession".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="getUserBySessionResponse" type="ns0:getUserBySessionResponse"/>
+<xs:complexType name="getUserBySessionResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "getUserBySession".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="user" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="loadUserData" type="ns0:loadUserData"/>
+<xs:complexType name="loadUserData">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "loadUserData".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="loadUserDataFasterJSON" type="ns0:loadUserDataFasterJSON"/>
+<xs:complexType name="loadUserDataFasterJSON">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "loadUserDataFasterJSON".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="loadUserDataFasterJSONResponse" type="ns0:loadUserDataFasterJSONResponse"/>
+<xs:complexType name="loadUserDataFasterJSONResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "loadUserDataFasterJSON".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="loadUserDataFasterXml" type="ns0:loadUserDataFasterXml"/>
+<xs:complexType name="loadUserDataFasterXml">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "loadUserDataFasterXml".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="loadUserDataFasterXmlResponse" type="ns0:loadUserDataFasterXmlResponse"/>
+<xs:complexType name="loadUserDataFasterXmlResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "loadUserDataFasterXml".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="loadUserDataJaxbJSON" type="ns0:loadUserDataJaxbJSON"/>
+<xs:complexType name="loadUserDataJaxbJSON">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "loadUserDataJaxbJSON".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="loadUserDataJaxbJSONResponse" type="ns0:loadUserDataJaxbJSONResponse"/>
+<xs:complexType name="loadUserDataJaxbJSONResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "loadUserDataJaxbJSON".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="loadUserDataJaxbXml" type="ns0:loadUserDataJaxbXml"/>
+<xs:complexType name="loadUserDataJaxbXml">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "loadUserDataJaxbXml".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="loadUserDataJaxbXmlResponse" type="ns0:loadUserDataJaxbXmlResponse"/>
+<xs:complexType name="loadUserDataJaxbXmlResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "loadUserDataJaxbXml".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="loadUserDataResponse" type="ns0:loadUserDataResponse"/>
+<xs:complexType name="loadUserDataResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "loadUserData".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="openSession" type="ns0:openSession"/>
+<xs:complexType name="openSession">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "openSession".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="login" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="password" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="openSessionResponse" type="ns0:openSessionResponse"/>
+<xs:complexType name="openSessionResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "openSession".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="removeAllProjectByUserId" type="ns0:removeAllProjectByUserId"/>
+<xs:complexType name="removeAllProjectByUserId">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "removeAllProjectByUserId".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="removeAllProjectByUserIdResponse" type="ns0:removeAllProjectByUserIdResponse"/>
+<xs:complexType name="removeAllProjectByUserIdResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "removeAllProjectByUserId".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="removeAllTaskByProjectId" type="ns0:removeAllTaskByProjectId"/>
+<xs:complexType name="removeAllTaskByProjectId">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "removeAllTaskByProjectId".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="id" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="removeAllTaskByProjectIdResponse" type="ns0:removeAllTaskByProjectIdResponse"/>
+<xs:complexType name="removeAllTaskByProjectIdResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "removeAllTaskByProjectId".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="removeAllTaskByUserId" type="ns0:removeAllTaskByUserId"/>
+<xs:complexType name="removeAllTaskByUserId">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "removeAllTaskByUserId".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="removeAllTaskByUserIdResponse" type="ns0:removeAllTaskByUserIdResponse"/>
+<xs:complexType name="removeAllTaskByUserIdResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "removeAllTaskByUserId".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="removeProject" type="ns0:removeProject"/>
+<xs:complexType name="removeProject">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "removeProject".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="id" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="removeProjectResponse" type="ns0:removeProjectResponse"/>
+<xs:complexType name="removeProjectResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "removeProject".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="project" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="removeTask" type="ns0:removeTask"/>
+<xs:complexType name="removeTask">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "removeTask".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="id" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="removeTaskResponse" type="ns0:removeTaskResponse"/>
+<xs:complexType name="removeTaskResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "removeTask".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="task" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="saveUserData" type="ns0:saveUserData"/>
+<xs:complexType name="saveUserData">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "saveUserData".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="saveUserDataFasterJSON" type="ns0:saveUserDataFasterJSON"/>
+<xs:complexType name="saveUserDataFasterJSON">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "saveUserDataFasterJSON".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="saveUserDataFasterJSONResponse" type="ns0:saveUserDataFasterJSONResponse"/>
+<xs:complexType name="saveUserDataFasterJSONResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "saveUserDataFasterJSON".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="saveUserDataFasterXml" type="ns0:saveUserDataFasterXml"/>
+<xs:complexType name="saveUserDataFasterXml">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "saveUserDataFasterXml".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="saveUserDataFasterXmlResponse" type="ns0:saveUserDataFasterXmlResponse"/>
+<xs:complexType name="saveUserDataFasterXmlResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "saveUserDataFasterXml".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="saveUserDataJaxbJSON" type="ns0:saveUserDataJaxbJSON"/>
+<xs:complexType name="saveUserDataJaxbJSON">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "saveUserDataJaxbJSON".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="saveUserDataJaxbJSONResponse" type="ns0:saveUserDataJaxbJSONResponse"/>
+<xs:complexType name="saveUserDataJaxbJSONResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "saveUserDataJaxbJSON".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="saveUserDataJaxbXml" type="ns0:saveUserDataJaxbXml"/>
+<xs:complexType name="saveUserDataJaxbXml">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "saveUserDataJaxbXml".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="saveUserDataJaxbXmlResponse" type="ns0:saveUserDataJaxbXmlResponse"/>
+<xs:complexType name="saveUserDataJaxbXmlResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "saveUserDataJaxbXml".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="saveUserDataResponse" type="ns0:saveUserDataResponse"/>
+<xs:complexType name="saveUserDataResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "saveUserData".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="sortAllProjectByUserId" type="ns0:sortAllProjectByUserId"/>
+<xs:complexType name="sortAllProjectByUserId">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "sortAllProjectByUserId".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="comparator" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="sortAllProjectByUserIdResponse" type="ns0:sortAllProjectByUserIdResponse"/>
+<xs:complexType name="sortAllProjectByUserIdResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "sortAllProjectByUserId".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="project" minOccurs="0" maxOccurs="unbounded">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="sortAllTaskByUserId" type="ns0:sortAllTaskByUserId"/>
+<xs:complexType name="sortAllTaskByUserId">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "sortAllTaskByUserId".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+    <xs:element name="comparator" type="xs:string" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="sortAllTaskByUserIdResponse" type="ns0:sortAllTaskByUserIdResponse"/>
+<xs:complexType name="sortAllTaskByUserIdResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "sortAllTaskByUserId".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="task" minOccurs="0" maxOccurs="unbounded">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="validateSession" type="ns0:validateSession"/>
+<xs:complexType name="validateSession">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit request wrapper for operation "validateSession".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="session" type="session" minOccurs="0">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+<xs:element name="validateSessionResponse" type="ns0:validateSessionResponse"/>
+<xs:complexType name="validateSessionResponse">
+  <xs:annotation>
+    <xs:documentation>
+      <![CDATA[doc/lit response wrapper for operation "validateSession".]]>
+    </xs:documentation>
+  </xs:annotation>
+  <xs:sequence>
+    <xs:element name="return" type="xs:boolean" minOccurs="1">
+      <xs:annotation>
+        <xs:documentation>
+          <![CDATA[]]>
+        </xs:documentation>
+      </xs:annotation>
+    </xs:element>
+  </xs:sequence>
+</xs:complexType>
+</xs:schema>

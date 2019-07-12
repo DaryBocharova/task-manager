@@ -1,0 +1,971 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?enunciate-assumed-base-uri http://localhost:8080/?>
+<wsdl:definitions targetNamespace="http://endpoint.api.tm.tm.bocharova.ru/"
+   xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/"
+   xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/"
+   xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/"
+   xmlns:xs="http://www.w3.org/2001/XMLSchema"
+   xmlns:http="http://schemas.xmlsoap.org/wsdl/http/"
+   xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/"
+   xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/"
+   xmlns:ns3="http://endpoint.api.tm.tm.bocharova.ru/"
+   xmlns:ns1="http://exception.tm.bocharova.ru/"
+   >
+
+  <wsdl:types>
+  <xs:schema targetNamespace="http://endpoint.api.tm.tm.bocharova.ru/">
+    <xs:import namespace="http://exception.tm.bocharova.ru/" schemaLocation="ns1.xsd"/>
+      <xs:include schemaLocation="ns3.xsd"/>
+  </xs:schema>
+  </wsdl:types>
+
+  <wsdl:message name="ISessionEndpoint.openSession">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "openSession".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:openSession">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ISessionEndpoint.openSessionResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "openSession".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:openSessionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="AuthenticationSecurityException">
+    <wsdl:part name="AuthenticationSecurityException" element="ns1:AuthenticationSecurityException">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ISessionEndpoint.validateSession">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "validateSession".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:validateSession">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ISessionEndpoint.validateSessionResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "validateSession".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:validateSessionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ISessionEndpoint.closeSession">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "closeSession".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:closeSession">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ISessionEndpoint.closeSessionResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "closeSession".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:closeSessionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.createTask">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "createTask".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:createTask">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.createTaskResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "createTask".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:createTaskResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.editTask">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "editTask".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:editTask">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.editTaskResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "editTask".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:editTaskResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.findOneTask">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "findOneTask".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:findOneTask">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.findOneTaskResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "findOneTask".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:findOneTaskResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.removeTask">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "removeTask".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:removeTask">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.removeTaskResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "removeTask".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:removeTaskResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.findAllTaskByProjectId">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "findAllTaskByProjectId".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:findAllTaskByProjectId">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.findAllTaskByProjectIdResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "findAllTaskByProjectId".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:findAllTaskByProjectIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.findAllTaskByUserId">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "findAllTaskByUserId".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:findAllTaskByUserId">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.findAllTaskByUserIdResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "findAllTaskByUserId".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:findAllTaskByUserIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.removeAllTaskByProjectId">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "removeAllTaskByProjectId".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:removeAllTaskByProjectId">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.removeAllTaskByProjectIdResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "removeAllTaskByProjectId".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:removeAllTaskByProjectIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.removeAllTaskByUserId">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "removeAllTaskByUserId".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:removeAllTaskByUserId">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.removeAllTaskByUserIdResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "removeAllTaskByUserId".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:removeAllTaskByUserIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.sortAllTaskByUserId">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "sortAllTaskByUserId".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:sortAllTaskByUserId">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.sortAllTaskByUserIdResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "sortAllTaskByUserId".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:sortAllTaskByUserIdResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.findAllTaskByPartOfNameOrDescription">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "findAllTaskByPartOfNameOrDescription".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:findAllTaskByPartOfNameOrDescription">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="ITaskEndpoint.findAllTaskByPartOfNameOrDescriptionResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "findAllTaskByPartOfNameOrDescription".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:findAllTaskByPartOfNameOrDescriptionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.createUser">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "createUser".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:createUser">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.createUserResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "createUser".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:createUserResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.changeUserPassword">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "changeUserPassword".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:changeUserPassword">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.changeUserPasswordResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "changeUserPassword".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:changeUserPasswordResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.editUserProfile">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "editUserProfile".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:editUserProfile">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.editUserProfileResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "editUserProfile".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:editUserProfileResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.findUserByLogin">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "findUserByLogin".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:findUserByLogin">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.findUserByLoginResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "findUserByLogin".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:findUserByLoginResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.getUserBySession">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "getUserBySession".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:getUserBySession">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.getUserBySessionResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "getUserBySession".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:getUserBySessionResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.findAllUser">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "findAllUser".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:findAllUser">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.findAllUserResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "findAllUser".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:findAllUserResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.loadUserData">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "loadUserData".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:loadUserData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.loadUserDataResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "loadUserData".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:loadUserDataResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.saveUserData">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "saveUserData".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:saveUserData">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.saveUserDataResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "saveUserData".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:saveUserDataResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.loadUserDataJaxbXml">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "loadUserDataJaxbXml".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:loadUserDataJaxbXml">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.loadUserDataJaxbXmlResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "loadUserDataJaxbXml".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:loadUserDataJaxbXmlResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.saveUserDataJaxbXml">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "saveUserDataJaxbXml".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:saveUserDataJaxbXml">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.saveUserDataJaxbXmlResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "saveUserDataJaxbXml".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:saveUserDataJaxbXmlResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.loadUserDataFasterXml">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "loadUserDataFasterXml".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:loadUserDataFasterXml">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.loadUserDataFasterXmlResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "loadUserDataFasterXml".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:loadUserDataFasterXmlResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.saveUserDataFasterXml">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "saveUserDataFasterXml".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:saveUserDataFasterXml">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.saveUserDataFasterXmlResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "saveUserDataFasterXml".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:saveUserDataFasterXmlResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.loadUserDataJaxbJSON">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "loadUserDataJaxbJSON".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:loadUserDataJaxbJSON">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.loadUserDataJaxbJSONResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "loadUserDataJaxbJSON".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:loadUserDataJaxbJSONResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.saveUserDataJaxbJSON">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "saveUserDataJaxbJSON".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:saveUserDataJaxbJSON">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.saveUserDataJaxbJSONResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "saveUserDataJaxbJSON".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:saveUserDataJaxbJSONResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.loadUserDataFasterJSON">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "loadUserDataFasterJSON".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:loadUserDataFasterJSON">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.loadUserDataFasterJSONResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "loadUserDataFasterJSON".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:loadUserDataFasterJSONResponse">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.saveUserDataFasterJSON">
+    <wsdl:documentation>
+      <![CDATA[request message for operation "saveUserDataFasterJSON".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:saveUserDataFasterJSON">
+    </wsdl:part>
+  </wsdl:message>
+  <wsdl:message name="IUserEndpoint.saveUserDataFasterJSONResponse">
+    <wsdl:documentation>
+      <![CDATA[response message for operation "saveUserDataFasterJSON".]]>
+    </wsdl:documentation>
+    <wsdl:part name="parameters" element="ns3:saveUserDataFasterJSONResponse">
+    </wsdl:part>
+  </wsdl:message>
+
+  <wsdl:portType name="ISessionEndpoint">
+  <wsdl:operation name="openSession">
+    <wsdl:input message="ns3:ISessionEndpoint.openSession"/>
+    <wsdl:output message="ns3:ISessionEndpoint.openSessionResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="validateSession">
+    <wsdl:input message="ns3:ISessionEndpoint.validateSession"/>
+    <wsdl:output message="ns3:ISessionEndpoint.validateSessionResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="closeSession">
+    <wsdl:input message="ns3:ISessionEndpoint.closeSession"/>
+    <wsdl:output message="ns3:ISessionEndpoint.closeSessionResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="ITaskEndpoint">
+  <wsdl:operation name="createTask">
+    <wsdl:input message="ns3:ITaskEndpoint.createTask"/>
+    <wsdl:output message="ns3:ITaskEndpoint.createTaskResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="editTask">
+    <wsdl:input message="ns3:ITaskEndpoint.editTask"/>
+    <wsdl:output message="ns3:ITaskEndpoint.editTaskResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="findOneTask">
+    <wsdl:input message="ns3:ITaskEndpoint.findOneTask"/>
+    <wsdl:output message="ns3:ITaskEndpoint.findOneTaskResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="removeTask">
+    <wsdl:input message="ns3:ITaskEndpoint.removeTask"/>
+    <wsdl:output message="ns3:ITaskEndpoint.removeTaskResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="findAllTaskByProjectId">
+    <wsdl:input message="ns3:ITaskEndpoint.findAllTaskByProjectId"/>
+    <wsdl:output message="ns3:ITaskEndpoint.findAllTaskByProjectIdResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="findAllTaskByUserId">
+    <wsdl:input message="ns3:ITaskEndpoint.findAllTaskByUserId"/>
+    <wsdl:output message="ns3:ITaskEndpoint.findAllTaskByUserIdResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="removeAllTaskByProjectId">
+    <wsdl:input message="ns3:ITaskEndpoint.removeAllTaskByProjectId"/>
+    <wsdl:output message="ns3:ITaskEndpoint.removeAllTaskByProjectIdResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="removeAllTaskByUserId">
+    <wsdl:input message="ns3:ITaskEndpoint.removeAllTaskByUserId"/>
+    <wsdl:output message="ns3:ITaskEndpoint.removeAllTaskByUserIdResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="sortAllTaskByUserId">
+    <wsdl:input message="ns3:ITaskEndpoint.sortAllTaskByUserId"/>
+    <wsdl:output message="ns3:ITaskEndpoint.sortAllTaskByUserIdResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="findAllTaskByPartOfNameOrDescription">
+    <wsdl:input message="ns3:ITaskEndpoint.findAllTaskByPartOfNameOrDescription"/>
+    <wsdl:output message="ns3:ITaskEndpoint.findAllTaskByPartOfNameOrDescriptionResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:portType name="IUserEndpoint">
+  <wsdl:operation name="createUser">
+    <wsdl:input message="ns3:IUserEndpoint.createUser"/>
+    <wsdl:output message="ns3:IUserEndpoint.createUserResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="changeUserPassword">
+    <wsdl:input message="ns3:IUserEndpoint.changeUserPassword"/>
+    <wsdl:output message="ns3:IUserEndpoint.changeUserPasswordResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="editUserProfile">
+    <wsdl:input message="ns3:IUserEndpoint.editUserProfile"/>
+    <wsdl:output message="ns3:IUserEndpoint.editUserProfileResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="findUserByLogin">
+    <wsdl:input message="ns3:IUserEndpoint.findUserByLogin"/>
+    <wsdl:output message="ns3:IUserEndpoint.findUserByLoginResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="getUserBySession">
+    <wsdl:input message="ns3:IUserEndpoint.getUserBySession"/>
+    <wsdl:output message="ns3:IUserEndpoint.getUserBySessionResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="findAllUser">
+    <wsdl:input message="ns3:IUserEndpoint.findAllUser"/>
+    <wsdl:output message="ns3:IUserEndpoint.findAllUserResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="loadUserData">
+    <wsdl:input message="ns3:IUserEndpoint.loadUserData"/>
+    <wsdl:output message="ns3:IUserEndpoint.loadUserDataResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="saveUserData">
+    <wsdl:input message="ns3:IUserEndpoint.saveUserData"/>
+    <wsdl:output message="ns3:IUserEndpoint.saveUserDataResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="loadUserDataJaxbXml">
+    <wsdl:input message="ns3:IUserEndpoint.loadUserDataJaxbXml"/>
+    <wsdl:output message="ns3:IUserEndpoint.loadUserDataJaxbXmlResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="saveUserDataJaxbXml">
+    <wsdl:input message="ns3:IUserEndpoint.saveUserDataJaxbXml"/>
+    <wsdl:output message="ns3:IUserEndpoint.saveUserDataJaxbXmlResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="loadUserDataFasterXml">
+    <wsdl:input message="ns3:IUserEndpoint.loadUserDataFasterXml"/>
+    <wsdl:output message="ns3:IUserEndpoint.loadUserDataFasterXmlResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="saveUserDataFasterXml">
+    <wsdl:input message="ns3:IUserEndpoint.saveUserDataFasterXml"/>
+    <wsdl:output message="ns3:IUserEndpoint.saveUserDataFasterXmlResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="loadUserDataJaxbJSON">
+    <wsdl:input message="ns3:IUserEndpoint.loadUserDataJaxbJSON"/>
+    <wsdl:output message="ns3:IUserEndpoint.loadUserDataJaxbJSONResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="saveUserDataJaxbJSON">
+    <wsdl:input message="ns3:IUserEndpoint.saveUserDataJaxbJSON"/>
+    <wsdl:output message="ns3:IUserEndpoint.saveUserDataJaxbJSONResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="loadUserDataFasterJSON">
+    <wsdl:input message="ns3:IUserEndpoint.loadUserDataFasterJSON"/>
+    <wsdl:output message="ns3:IUserEndpoint.loadUserDataFasterJSONResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  <wsdl:operation name="saveUserDataFasterJSON">
+    <wsdl:input message="ns3:IUserEndpoint.saveUserDataFasterJSON"/>
+    <wsdl:output message="ns3:IUserEndpoint.saveUserDataFasterJSONResponse"/>
+    <wsdl:fault name="AuthenticationSecurityException" message="ns3:AuthenticationSecurityException"/>
+  </wsdl:operation>
+  </wsdl:portType>
+
+
+  <wsdl:binding name="ISessionEndpointPortBinding" type="ns3:ISessionEndpoint">
+    <wsdl:documentation>
+      <![CDATA[SOAP Binding for ISessionEndpoint]]>
+    </wsdl:documentation>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="openSession">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="validateSession">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="closeSession">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:binding name="ITaskEndpointPortBinding" type="ns3:ITaskEndpoint">
+    <wsdl:documentation>
+      <![CDATA[SOAP Binding for ITaskEndpoint]]>
+    </wsdl:documentation>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="createTask">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="editTask">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findOneTask">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeTask">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findAllTaskByProjectId">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findAllTaskByUserId">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeAllTaskByProjectId">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="removeAllTaskByUserId">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="sortAllTaskByUserId">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findAllTaskByPartOfNameOrDescription">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:binding name="IUserEndpointPortBinding" type="ns3:IUserEndpoint">
+    <wsdl:documentation>
+      <![CDATA[SOAP Binding for IUserEndpoint]]>
+    </wsdl:documentation>
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+    <wsdl:operation name="createUser">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="changeUserPassword">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="editUserProfile">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findUserByLogin">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="getUserBySession">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="findAllUser">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="loadUserData">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="saveUserData">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="loadUserDataJaxbXml">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="saveUserDataJaxbXml">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="loadUserDataFasterXml">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="saveUserDataFasterXml">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="loadUserDataJaxbJSON">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="saveUserDataJaxbJSON">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="loadUserDataFasterJSON">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+    <wsdl:operation name="saveUserDataFasterJSON">
+      <soap:operation soapAction=""/>
+      <wsdl:input>
+        <soap:body use="literal"/>
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal"/>
+      </wsdl:output>
+      <wsdl:fault name="AuthenticationSecurityException">
+        <soap:fault name="AuthenticationSecurityException" use="literal"/>
+      </wsdl:fault>
+    </wsdl:operation>
+  </wsdl:binding>
+
+  <wsdl:service name="ISessionEndpointService">
+    <wsdl:port name="ISessionEndpointPort" binding="ns3:ISessionEndpointPortBinding">
+      <soap:address location="http://localhost:8080/ISessionEndpointService"/>
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:service name="ITaskEndpointService">
+    <wsdl:port name="ITaskEndpointPort" binding="ns3:ITaskEndpointPortBinding">
+      <soap:address location="http://localhost:8080/ITaskEndpointService"/>
+    </wsdl:port>
+  </wsdl:service>
+  <wsdl:service name="IUserEndpointService">
+    <wsdl:port name="IUserEndpointPort" binding="ns3:IUserEndpointPortBinding">
+      <soap:address location="http://localhost:8080/IUserEndpointService"/>
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>
+
