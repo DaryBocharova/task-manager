@@ -11,13 +11,13 @@ public interface IUserRepository {
 
     Collection<User> findAll();
 
-    Integer removeAll();
+    void removeAll();
 
-    Integer remove(@NotNull final User user);
+    void remove(@NotNull final User user);
 
-    Integer persist(@NotNull final User user);
+    void persist(@NotNull final User user);
 
-    Integer merge(@NotNull final User user);
+    User merge(@NotNull final User user);
 
     User findByLogin(@NotNull final String login);
 }

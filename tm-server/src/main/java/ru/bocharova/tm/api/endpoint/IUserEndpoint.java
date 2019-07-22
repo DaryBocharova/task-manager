@@ -3,7 +3,6 @@ package ru.bocharova.tm.api.endpoint;
 import org.jetbrains.annotations.NotNull;
 import ru.bocharova.tm.DTO.SessionDTO;
 import ru.bocharova.tm.DTO.UserDTO;
-import ru.bocharova.tm.entity.Session;
 import ru.bocharova.tm.exception.AuthenticationSecurityException;
 import ru.bocharova.tm.exception.DataValidateException;
 

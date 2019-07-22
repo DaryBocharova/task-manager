@@ -6,69 +6,43 @@ import lombok.Setter;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import ru.bocharova.tm.enumerate.Status;
-import ru.bocharova.tm.util.DateFormatterUtil;
-import ru.bocharova.tm.util.EnumUtil;
+import ru.bocharova.tm.DTO.ProjectDTO;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Date;
+import java.util.List;
 
 @Getter
 @Setter
 @NoArgsConstructor
 @Entity
-@Table(name = "app_project")
 @NamedEntityGraph(
         name = "project-graph",
         attributeNodes = {
                 @NamedAttributeNode("task"),
                 @NamedAttributeNode("user")})
-public class Project extends AbstractEntity implements Serializable {
+@Table(name = "app_project")
+public class Project extends AbstractEntityBase implements Serializable {
 
+    @Id
+    private String id;
     @Nullable
-    @Column(name = "dateBegin")
-    private Date dateBegin = null;
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Task> tasks;
 
-    @Nullable
-    @Column(name = "dateEnd")
-    private Date dateEnd = new Date();
-
-    @NotNull
-    @Column
-    private String userId = "";
-
-    @NotNull
-    @Getter
-    @Column(name = "status")
-    @Enumerated(EnumType.STRING)
-    private Status status = Status.PLANNED;
-
-    public Project(@NotNull final String userId, @NotNull final String name, @NotNull final String description) {
-        this.name = name;
-        this.description = description;
-        this.dateBegin = new Date();
-        this.userId = userId;
+    public ProjectDTO getDTO() {
+        @NotNull final ProjectDTO dto = new ProjectDTO();
+        dto.setId(id);
+        dto.setName(name);
+        dto.setDescription(description);
+        dto.setDateBegin(dateBegin);
+        dto.setDateEnd(dateEnd);
+        dto.setStatus(status);
+        dto.setUserId(user.getId());
+        return dto;
     }
 
-    public void setStatus(@NotNull final String status) {
-        this.status = EnumUtil.stringToStatus(status);
-    }
+    @ManyToOne(optional = false)
+    private User users;
 
-    public String getStatus() {
-        return status.toString();
-    }
-
-    @Override
-    public String toString() {
-        return "Project{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", dateBegin=" + DateFormatterUtil.format(dateBegin) +
-                ", dateEnd=" + DateFormatterUtil.format(dateEnd) +
-                ", status=" + status +
-                ", userId='" + userId + '\'' +
-                '}';
-    }
 }

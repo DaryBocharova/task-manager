@@ -3,6 +3,7 @@ package ru.bocharova.tm.api.service;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.bocharova.tm.DTO.SessionDTO;
+import ru.bocharova.tm.DTO.UserDTO;
 import ru.bocharova.tm.exception.AuthenticationSecurityException;
 import ru.bocharova.tm.exception.DataValidateException;
 
@@ -13,15 +14,15 @@ public interface ISessionService {
 
     void clear() throws DataValidateException;
 
-    SessionDTO findOne(@NotNull final String id);
+    SessionDTO findOne(@NotNull final String id) throws DataValidateException;
 
-    SessionDTO remove(@NotNull final String id);
+    SessionDTO remove(@NotNull final String id) throws DataValidateException;
 
-    Collection<SessionDTO> findAll();
+    Collection<SessionDTO> findAll() throws DataValidateException;
 
-    SessionDTO create(@NotNull final String userId) throws IOException;
+    SessionDTO create(@NotNull final UserDTO userDTO) throws IOException, DataValidateException;
 
-    void validate(@Nullable final SessionDTO session) throws AuthenticationSecurityException;
+    void validate(@Nullable final SessionDTO sessionDTO) throws AuthenticationSecurityException, DataValidateException;
 
-    boolean validateAdmin(@Nullable final SessionDTO session) throws AuthenticationSecurityException;
+    void validateAdmin(@Nullable final SessionDTO sessionDTO) throws AuthenticationSecurityException, DataValidateException;
 }

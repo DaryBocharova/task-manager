@@ -20,10 +20,10 @@ public interface ISessionEndpoint extends IEndPoint {
             AuthenticationSecurityException, IOException, DataValidateException;
 
     @WebMethod
-    SessionDTO closeSession(@WebParam(name = "session") @NotNull final SessionDTO session) throws
+    SessionDTO closeSession(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO) throws
             AuthenticationSecurityException, DataValidateException;
 
     @WebMethod
-    void validateAdminSession(@WebParam(name = "session") @Nullable final SessionDTO session) throws
+    void validateAdminSession(@WebParam(name = "session") @Nullable final SessionDTO sessionDTO) throws
             AuthenticationSecurityException, DataValidateException;
 }

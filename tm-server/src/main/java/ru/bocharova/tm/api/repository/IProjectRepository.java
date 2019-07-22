@@ -24,8 +24,6 @@ public interface IProjectRepository {
 
     Project findOneByUserId(@NotNull final String id, @NotNull final User user);
 
-    Integer removeOneByUserId(@NotNull final String id, @NotNull final User user);
-
     void removeAllByUserID(@NotNull final User user);
 
     Collection<Project> sortAllByUserId(@NotNull final User user, @NotNull final String parameter);

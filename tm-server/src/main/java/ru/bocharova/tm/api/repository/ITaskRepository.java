@@ -13,23 +13,23 @@ public interface ITaskRepository {
 
     void removeAll();
 
+    Collection<Task> findAll();
+
     void remove(@NotNull final Task task);
 
     void persist(@NotNull final Task task);
 
-    Integer merge(@NotNull final Task task);
+    Task merge(@NotNull final Task task);
 
     Collection<Task> findAllByUserId(@NotNull final User user);
 
-    Collection<Task> findAllByProjectAndUserId(@NotNull final User user, @NotNull final Project project);
+    Collection<Task> findAllByProjectAndUserId(@NotNull final Project project, @NotNull final User user);
 
     Task findOneByUserId(@NotNull final String id, @NotNull final User user);
 
-    Integer removeOneByUserId(@NotNull final String id, @NotNull final User user);
+    void removeAllByUserId(@NotNull final User user);
 
-    Integer removeAllByUserId(@NotNull final User user);
-
-    Integer removeAllByProjectAndUserId(@NotNull final User user, @NotNull final Project project);
+    void removeAllByProjectAndUserId( @NotNull final Project project, @NotNull final User user);
 
     Collection<Task> sortAllByUserId(@NotNull final User user, @NotNull final String parameter);
 

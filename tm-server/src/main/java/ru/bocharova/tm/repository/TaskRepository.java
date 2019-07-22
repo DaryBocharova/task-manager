@@ -1,82 +1,146 @@
 package ru.bocharova.tm.repository;
 
+;
+import lombok.AllArgsConstructor;
+import lombok.SneakyThrows;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
 import ru.bocharova.tm.api.repository.ITaskRepository;
+import ru.bocharova.tm.entity.Project;
 import ru.bocharova.tm.entity.Task;
+import ru.bocharova.tm.entity.User;
 
+import javax.persistence.EntityManager;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Predicate;
+import javax.persistence.criteria.Root;
 import java.util.*;
 
-public final class TaskRepository extends AbstractRepository<Task> implements ITaskRepository {
+@AllArgsConstructor
+public final class TaskRepository implements ITaskRepository {
+
+    @NotNull
+    private final EntityManager entityManager;
 
     @Override
-    public Collection<Task> findAllByUserId(@NotNull final String id) {
-        @NotNull
-        Collection<Task> userTasks = new ArrayList<>();
-        for (Task task : findAll()) {
-            if (id.equals(task.getUserID())) {
-                userTasks.add(task);
-            }
-        }
-        return userTasks;
+    public Task findOne(
+            @NotNull final String id) {
+        return entityManager.find(Task.class, id);
     }
 
     @Override
-    public Collection<Task> findAllByProjectId(@NotNull String id, @NotNull String userId) {
-        @NotNull
-        Collection<Task> tasksByProjectID = new ArrayList<>();
-        for (Task task : findAll()) {
-            if (id.equals(task.getProjectID()) && userId.equals(task.getUserID())) {
-                tasksByProjectID.add(task);
-            }
-        }
-        return tasksByProjectID;
+    public Collection<Task> findAll() {
+        return entityManager.createQuery("SELECT e FROM Task e", Task.class).getResultList();
     }
 
     @Override
-    public Task findOne(@NotNull final String id, @NotNull final String userId) {
-        @NotNull final Task task = findOne(id);
-        @NotNull Collection<Task> tasks = findAllByUserId(userId);
-        if (task == null) return null;
-        if (tasks.isEmpty()) return null;
-        if (!tasks.contains(task)) return null;
-        return task;
+    public void removeAll() {
+        @Nullable final Collection<Task> tasks = findAll();
+        if (tasks == null) return;
+        tasks.forEach(entityManager::remove);
     }
 
     @Override
-    public Task remove(@NotNull String id, @NotNull String userId) {
-        if (findOne(id, userId) == null) return null;
-        return remove(id);
+    public void remove(
+            @NotNull final Task task) {
+        entityManager.remove(task);
     }
 
     @Override
-    public void removeAllByUserId(@NotNull final String id) {
-        for (Task task : findAllByUserId(id)) {
-            remove(task.getId());
-        }
+    public void persist(
+            @NotNull final Task task) {
+        entityManager.persist(task);
     }
 
     @Override
-    public void removeAllByProjectId(@NotNull final String id, @NotNull final String userId) {
-        for (Task task : findAllByProjectId(id, userId)) {
-            remove(task.getId());
-        }
+    public Task merge(
+            @NotNull final Task task) {
+        return entityManager.merge(task);
     }
 
+
     @Override
-    public Collection<Task> sortAllByUserId(@NotNull String id, Comparator<Task> comparator) {
-        List<Task> tasks = new ArrayList<>(findAllByUserId(id));
-        Collections.sort(tasks, comparator);
+    public Collection<Task> findAllByUserId(
+            @NotNull final User user) {
+        @NotNull final String query = "SELECT e FROM Task e WHERE e.user = :user";
+        @Nullable final List<Task> tasks = entityManager.createQuery(query, Task.class)
+                .setParameter("user", user)
+                .getResultList();
         return tasks;
     }
 
     @Override
-    public Collection<Task> findAllByPartOfNameOrDescription(@NotNull String name, @NotNull String description, @NotNull String userId) {
-        List<Task> findTasks = new ArrayList<>();
-        for (Task task : findAllByUserId(userId)) {
-            if (task.getName().contains(name) || task.getDescription().contains(description)) {
-                findTasks.add(task);
-            }
-        }
-        return findTasks;
+    public Collection<Task> findAllByProjectAndUserId(
+            @NotNull final Project project,
+            @NotNull final User user) {
+        @NotNull final String query = "SELECT e FROM Task e WHERE e.project = :project AND e.user = :user";
+        @Nullable final List<Task> tasks = entityManager.createQuery(query, Task.class)
+                .setParameter("project", project)
+                .setParameter("user", user)
+                .getResultList();
+        return tasks;
+    }
+
+    @Override
+    public Task findOneByUserId(
+            @NotNull final String id,
+            @NotNull final User user) {
+        @NotNull final String query = "SELECT e FROM Task e WHERE e.id = :id AND e.user = :user";
+        @Nullable final Task task = entityManager.createQuery(query, Task.class)
+                .setParameter("id", id)
+                .setParameter("user", user)
+                .getResultList()
+                .stream()
+                .findFirst()
+                .orElse(null);
+        return task;
+    }
+
+    @Override
+    @SneakyThrows
+    public void removeAllByUserId(
+            @NotNull final User user) {
+        @NotNull final Collection<Task> tasks = findAllByUserId(user);
+        if (tasks == null) return;
+        tasks.forEach(entityManager::remove);
+    }
+
+    @Override
+    public void removeAllByProjectAndUserId(
+            @NotNull final Project project,
+            @NotNull final User user) {
+        @Nullable final Collection<Task> tasks = findAllByProjectAndUserId(project, user);
+        if (tasks == null) return;
+        tasks.forEach(entityManager::remove);
+    }
+
+    @Override
+    public Collection<Task> sortAllByUserId(
+            @NotNull final User user,
+            @NotNull final String parameter) {
+        @NotNull final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
+        @NotNull final CriteriaQuery<Task> criteriaQuery = criteriaBuilder.createQuery(Task.class);
+        @NotNull final Root<Task> taskRoot = criteriaQuery.from(Task.class);
+        @NotNull final Predicate condition = criteriaBuilder.equal(taskRoot.get("user"), user);
+        criteriaQuery.select(taskRoot).where(condition);
+        criteriaQuery.orderBy(criteriaBuilder.desc(taskRoot.get(parameter)));
+        @NotNull final TypedQuery<Task> query = entityManager.createQuery(criteriaQuery);
+        return query.getResultList();
+    }
+
+    @Override
+    public Collection<Task> findAllByPartOfNameOrDescription(
+            @NotNull final String name,
+            @NotNull final String description,
+            @NotNull final User user) {
+        @NotNull final String query = "SELECT e FROM Task e WHERE e.user = :user and (e.name like :name OR e.description LIKE :description)";
+        @Nullable final List<Task> tasks = entityManager.createQuery(query, Task.class)
+                .setParameter("user", user)
+                .setParameter("name", "%" + name + "%")
+                .setParameter("description", "%" + description + "%")
+                .getResultList();
+        return tasks;
     }
 }

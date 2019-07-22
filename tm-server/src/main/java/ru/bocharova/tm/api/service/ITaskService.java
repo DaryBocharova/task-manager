@@ -1,37 +1,40 @@
 package ru.bocharova.tm.api.service;
 
 import org.jetbrains.annotations.NotNull;
+import ru.bocharova.tm.DTO.TaskDTO;
 import ru.bocharova.tm.entity.Task;
+import ru.bocharova.tm.exception.DataValidateException;
 
 import java.util.Collection;
 
 public interface ITaskService {
 
-    Task create(@NotNull final String userId, @NotNull final String projectId,@NotNull final String name, @NotNull final String description);
+    void create(@NotNull final TaskDTO taskDTO) throws DataValidateException;
 
-    Task edit(@NotNull final String id, @NotNull final String name, @NotNull final String description, @NotNull final String status);
+    void edit(@NotNull final TaskDTO taskDTO) throws DataValidateException;
 
-    Task findOne(@NotNull final String id, @NotNull final String userId);
+    TaskDTO findOne(@NotNull final String id, @NotNull final String userId) throws DataValidateException;
 
-    void clear();
+    void clear() throws DataValidateException;
 
-    Task findOne(@NotNull final String id);
+    TaskDTO findOne(@NotNull final String id) throws DataValidateException;
 
-    Task remove(@NotNull final String id, @NotNull final String userId);
+    void remove(@NotNull final String id, @NotNull final String userId) throws DataValidateException;
 
-    Task remove(@NotNull final String id);
+    void remove(@NotNull final String id) throws DataValidateException;
 
-    Collection<Task> findAll();
+    Collection<TaskDTO> findAll() throws DataValidateException;
 
-    Collection<Task> findAllByProjectId(@NotNull final String id, @NotNull final String userId);
+    Collection<TaskDTO> findAllByProjectId(@NotNull final String id, @NotNull final String userId) throws DataValidateException;
 
-    Collection<Task> findAllByUserId(@NotNull final String id);
+    Collection<TaskDTO> findAllByUserId(@NotNull final String id) throws DataValidateException;
 
-    void removeAllByProjectId(@NotNull final String id, @NotNull final String userId);
+    void removeAllByProjectId(@NotNull final String id, @NotNull final String userId) throws DataValidateException;
 
-    void removeAllByUserId(@NotNull final String id);
+    void removeAllByUserId(@NotNull final String id) throws DataValidateException;
 
-    Collection<Task> sortAllByUserId(@NotNull final String id, @NotNull final String comparator);
+    Collection<TaskDTO> sortAllByUserId(@NotNull final String id, @NotNull final String comparator) throws DataValidateException;
 
-    Collection<Task> findAllByPartOfNameOrDescription(@NotNull final String userId, @NotNull final String name, @NotNull final String description);
+    Collection<TaskDTO> findAllByPartOfNameOrDescription(@NotNull final String userId, @NotNull final String name,
+                                                      @NotNull final String description) throws DataValidateException;
 }

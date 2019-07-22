@@ -2,6 +2,7 @@ package ru.bocharova.tm.api.repository;
 
 import org.jetbrains.annotations.NotNull;
 import ru.bocharova.tm.entity.Session;
+import ru.bocharova.tm.entity.User;
 
 import java.util.Collection;
 
@@ -11,13 +12,15 @@ public interface ISessionRepository {
 
     Collection<Session> findAll();
 
-    Integer removeAll();
+    void removeAll();
 
-    Integer remove(@NotNull final String id);
+    void remove(@NotNull final Session session);
 
-    Integer persist(@NotNull final Session session);
+    void persist(@NotNull final Session session);
 
-    Integer merge(@NotNull final Session session);
+    Session merge(@NotNull final Session session);
 
-    Collection<Session> findAllByUserId(@NotNull final String id);
+    Collection<Session> findAllByUserId(@NotNull final User user);
+
+    void remove(String id);
 }

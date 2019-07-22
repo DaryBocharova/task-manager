@@ -3,13 +3,14 @@ package ru.bocharova.tm.endpoint;
 import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import ru.bocharova.tm.DTO.SessionDTO;
+import ru.bocharova.tm.DTO.UserDTO;
 import ru.bocharova.tm.api.endpoint.ISessionEndpoint;
 import ru.bocharova.tm.api.service.IServiceLocator;
 import ru.bocharova.tm.api.service.ISessionService;
 import ru.bocharova.tm.api.service.IUserService;
 import ru.bocharova.tm.exception.AuthenticationSecurityException;
-import ru.bocharova.tm.entity.Session;
-import ru.bocharova.tm.entity.User;
+import ru.bocharova.tm.exception.DataValidateException;
 
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -34,23 +35,24 @@ public class SessionEndpoint implements ISessionEndpoint {
 
     @Override
     @WebMethod
-    public void validateAdminSession(@WebParam(name = "session") @Nullable final Session session) throws AuthenticationSecurityException{
-        sessionService.validateAdmin(session);
-    }
-    @Override
-    @WebMethod
-    public Session openSession(@WebParam(name = "login") @NotNull final String login,
-                               @WebParam(name = "password") @NotNull final String password)
-            throws AuthenticationSecurityException, IOException {
-        @NotNull
-        User loggedUser = userService.authenticationUser(login, password);
-        return sessionService.create(loggedUser.getId());
+    public void validateAdminSession(@WebParam(name = "session") @Nullable final SessionDTO sessionDTO) throws AuthenticationSecurityException, DataValidateException {
+        sessionService.validateAdmin(sessionDTO);
     }
 
     @Override
     @WebMethod
-    public Session closeSession(@WebParam(name = "session") @NotNull final Session session) throws AuthenticationSecurityException {
-        sessionService.validate(session);
-        return sessionService.remove(session.getId());
+    public SessionDTO openSession(@WebParam(name = "login") @NotNull final String login,
+                                  @WebParam(name = "password") @NotNull final String password) throws
+            AuthenticationSecurityException, IOException, DataValidateException {
+        @NotNull
+        UserDTO loggedUser = userService.authenticationUser(login, password);
+        return sessionService.create(loggedUser);
+    }
+
+    @Override
+    @WebMethod
+    public SessionDTO closeSession(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO) throws AuthenticationSecurityException, DataValidateException {
+        sessionService.validate(sessionDTO);
+        return sessionService.remove(sessionDTO.getId());
     }
 }

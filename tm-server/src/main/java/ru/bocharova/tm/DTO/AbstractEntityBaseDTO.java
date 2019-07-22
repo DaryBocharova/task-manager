@@ -1,5 +1,8 @@
 package ru.bocharova.tm.DTO;
 
+import lombok.Getter;
+import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.bocharova.tm.entity.User;
 import ru.bocharova.tm.enumerate.Status;
@@ -9,18 +12,20 @@ import java.io.Serializable;
 import java.util.Date;
 
 @MappedSuperclass
-public class AbstractEntityBaseDTO  implements Serializable {
+@Getter
+@Setter
+public class AbstractEntityBaseDTO implements Serializable {
 
     @Nullable
     protected Status status = Status.PLANNED;
 
-    @Nullable
-    protected User user;
+    @NotNull
+    protected String user;
 
-    @Nullable
+    @NotNull
     protected Date dateBegin = new Date();
 
-    @Nullable
+    @NotNull
     protected Date dateEnd = new Date();
 
 }

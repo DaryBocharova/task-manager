@@ -3,7 +3,9 @@ package ru.bocharova.tm.entity;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import ru.bocharova.tm.DTO.SessionDTO;
 
 import javax.persistence.*;
 import java.util.Date;
@@ -17,26 +19,30 @@ import java.util.Date;
         name = "session-graph",
         attributeNodes = {
                 @NamedAttributeNode("user")})
-public class Session extends AbstractEntity {
-    @Column(name = "user_id")
-    @Nullable
-    private String userId;
+public class Session extends AbstractEntityBase {
 
-    @Column(name = "signature")
+    @Id
+    private String id;
+
     @Nullable
     private String signature;
 
-    @Column
     @Nullable
-    private Date timeStamp;
+    private Date timestamp;
 
-    @Override
-    public String toString() {
-        return "Session{" +
-                "userId='" + userId + '\'' +
-                ", signature='" + signature + '\'' +
-                ", timeStamp=" + timeStamp +
-                ", id='" + id + '\'' +
-                '}';
+    @Nullable
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    public SessionDTO getDTO() {
+        @NotNull final SessionDTO dto = new SessionDTO();
+        dto.setId(id);
+        dto.setName(name);
+        dto.setDescription(description);
+        dto.setSignature(signature);
+        dto.setTimestamp(timestamp);
+        dto.setUserId(user.getId());
+        return dto;
     }
 }

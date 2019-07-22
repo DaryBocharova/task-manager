@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+import ru.bocharova.tm.DTO.UserDTO;
 import ru.bocharova.tm.enumerate.Role;
 
 import javax.persistence.*;
@@ -13,6 +14,7 @@ import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
 import javax.xml.bind.annotation.XmlRootElement;
 import java.io.Serializable;
+import java.util.List;
 
 @Getter
 @Setter
@@ -24,28 +26,48 @@ import java.io.Serializable;
         attributeNodes = {
                 @NamedAttributeNode("task"),
                 @NamedAttributeNode("project")})
-public class User extends AbstractEntity implements Serializable {
+public class User extends AbstractEntityBase implements Serializable {
 
+    @Id
+    private String id;
+
+    @Column
     @Nullable
-    @Column(unique = true)
     private String login = "";
 
     @Nullable
-    @Column(name = "password")
+    @Column(unique = true)
     private String password = "";
 
+    @Column
     @Nullable
-    @Column(name = "role")
-    @Enumerated(EnumType.STRING)
+    @Enumerated(value = EnumType.STRING)
     private Role role = Role.USER;
 
-    @Override
-    public String toString() {
-        return "User{" +
-                "Id='" + id + '\'' +
-                ", login='" + login + '\'' +
-                ", password='" + password + '\'' +
-                ", role='" + role + '\'' +
-                '}';
+    @Nullable
+    @OneToMany(mappedBy = "users", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Project> projects;
+
+    @Nullable
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Task> tasks;
+
+    @Nullable
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Session> session;
+
+    public User() {
+    }
+
+    public UserDTO getDTO() {
+        @NotNull final UserDTO dto = new UserDTO();
+        dto.setId(id);
+        dto.setLogin(login);
+        dto.setPassword(null);
+        dto.setRole(role);
+        dto.setName(name);
+        dto.setDescription(description);
+        return dto;
     }
 }
+

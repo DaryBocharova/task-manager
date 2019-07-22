@@ -4,6 +4,8 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
+import org.jetbrains.annotations.Nullable;
+import ru.bocharova.tm.enumerate.Status;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -13,13 +15,14 @@ import java.util.Date;
 @NoArgsConstructor
 public class TaskDTO extends AbstractEntityDTO implements Serializable {
 
-    @Getter
-    @Setter
-    @NotNull
-    private String projectId = "";
+    @Nullable
+    private String projectId;
 
-    public TaskDTO(@NotNull final String projectId, @NotNull final String userId, @NotNull final String name,
-                   @NotNull final String description) {
+    public TaskDTO(
+            @Nullable final String name,
+            @Nullable final String description,
+            @Nullable final String projectId,
+            @Nullable final String userId) {
         this.name = name;
         this.description = description;
         this.projectId = projectId;

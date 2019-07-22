@@ -1,78 +1,52 @@
 package ru.bocharova.tm.entity;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import ru.bocharova.tm.enumerate.Status;
-import ru.bocharova.tm.util.DateAdapter;
-import ru.bocharova.tm.util.DateFormatterUtil;
-import ru.bocharova.tm.util.EnumUtil;
+import ru.bocharova.tm.DTO.TaskDTO;
 
 import javax.persistence.*;
-import javax.xml.bind.annotation.XmlAccessType;
-import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlRootElement;
-import javax.xml.bind.annotation.adapters.XmlJavaTypeAdapter;
 import java.io.Serializable;
-import java.util.Date;
 
-@Getter
-@Setter
-@NoArgsConstructor
-@Entity
 @Table(name = "app_task")
 @NamedEntityGraph(
         name = "task-graph",
         attributeNodes = {
                 @NamedAttributeNode("project"),
                 @NamedAttributeNode("user")})
-public class Task extends AbstractEntity implements Serializable {
+@Getter
+@Setter
+@NoArgsConstructor
+@Entity
+public class Task extends AbstractEntityBase implements Serializable {
 
-    @NotNull
-    @Column
-    private String projectId = "";
+    @Id
+    private String id;
 
-    @Column
     @Nullable
-    private Date dateBegin = null;
+    @ManyToOne
+    @JoinColumn(name = "project_id")
+    private Project project;
 
-    @Column
     @Nullable
-    private Date dateEnd = null;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
-    @Column
-    @NotNull
-    private String userId = "";
-
-    @Column
-    @NotNull
-    @Getter
-    @Setter
-    @Enumerated(EnumType.STRING)
-    private Status status = Status.PLANNED;
-
-    public Task(@NotNull final String name, @NotNull final String description, @NotNull final String projectId, @NotNull final String userId) {
-        this.name = name;
-        this.description = description;
-        this.dateBegin = new Date();
-        this.projectId = projectId;
-        this.userId = userId;
+    public TaskDTO getDTO() {
+        @NotNull final TaskDTO dto = new TaskDTO();
+        dto.setId(id);
+        dto.setName(name);
+        dto.setDescription(description);
+        dto.setDateBegin(dateBegin);
+        dto.setDateEnd(dateEnd);
+        dto.setStatus(status);
+        dto.setUserId(user.getId());
+        dto.setProjectId(project.getId());
+        return dto;
     }
 
-    @Override
-    public String toString() {
-        return "Task{" +
-                "id='" + id + '\'' +
-                ", name='" + name + '\'' +
-                ", description='" + description + '\'' +
-                ", dateBegin=" + DateFormatterUtil.format(dateBegin) +
-                ", dateEnd=" + DateFormatterUtil.format(dateEnd) +
-                ", status=" + status +
-                ", projectId='" + projectId + '\'' +
-                ", userId='" + userId + '\'' +
-                '}';
-    }
+
 }

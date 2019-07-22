@@ -2,10 +2,10 @@ package ru.bocharova.tm.service;
 
 import lombok.AllArgsConstructor;
 import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.bocharova.tm.DTO.SessionDTO;
+import ru.bocharova.tm.DTO.UserDTO;
 import ru.bocharova.tm.api.repository.ISessionRepository;
 import ru.bocharova.tm.api.service.IPropertyService;
 import ru.bocharova.tm.api.service.ISessionService;
@@ -16,6 +16,7 @@ import ru.bocharova.tm.entity.Session;
 import ru.bocharova.tm.entity.User;
 import ru.bocharova.tm.exception.DataValidateException;
 import ru.bocharova.tm.repository.SessionRepository;
+import ru.bocharova.tm.repository.UserRepository;
 import ru.bocharova.tm.util.SignatureUtil;
 import ru.bocharova.tm.util.StringValidator;
 
@@ -24,10 +25,10 @@ import javax.persistence.EntityManagerFactory;
 import java.io.IOException;
 import java.util.Collection;
 import java.util.Date;
+import java.util.stream.Collectors;
 
 @AllArgsConstructor
 public class SessionService implements ISessionService {
-
 
     @NotNull
     final EntityManagerFactory entityManagerFactory;
@@ -53,88 +54,126 @@ public class SessionService implements ISessionService {
     }
 
     @Override
-    public SessionDTO findOne(@NotNull String id) {
-        if (!StringValidator.validate(id)) return null;
-        try(SqlSession session = sessionFactory.openSession()){
-            return session.getMapper(ISessionRepository.class).findOne(id);
-        }
-    }
-
-    @Override
-    public SessionDTO remove(@NotNull String id) {
-        if (!StringValidator.validate(id)) return null;
-        @Nullable SessionDTO sessionDTO = findOne(id);
-        if (sessionDTO == null) return null;
-        @Nullable SqlSession sqlSession = null;
+    public SessionDTO findOne(@NotNull String id) throws DataValidateException {
+        @NotNull final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        @NotNull final ISessionRepository sessionRepository = new SessionRepository(entityManager);
         try {
-            sqlSession = sessionFactory.openSession();
-            sqlSession.getMapper(ISessionRepository.class).remove(id);
-            sqlSession.commit();
-            return sessionDTO;
+            entityManager.getTransaction().begin();
+            @Nullable final Session session = sessionRepository
+                    .findOne(id);
+            if (session == null) throw new DataValidateException("Session not found!");
+            entityManager.getTransaction().commit();
+            return session.getDTO();
         } catch (Exception e) {
-            if (sqlSession != null) sqlSession.rollback();
+            entityManager.getTransaction().rollback();
+            throw new DataValidateException(e.getMessage());
         } finally {
-            if (sqlSession != null) sqlSession.close();
-        }
-        return null;
-    }
-
-    @Override
-    public Collection<Session> findAll() {
-        try(SqlSession session = sessionFactory.openSession()){
-            return session.getMapper(ISessionRepository.class).findAll();
+            entityManager.close();
         }
     }
 
+
     @Override
-    public Session create(@NotNull String userId) throws IOException {
-        if (!StringValidator.validate(userId)) return null;
+    public SessionDTO remove(@NotNull final String id) throws DataValidateException {
+        @NotNull final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        @NotNull final ISessionRepository sessionRepository = new SessionRepository(entityManager);
+        try {
+            entityManager.getTransaction().begin();
+            @Nullable final Session session = sessionRepository
+                    .findOne(id);
+            if (session == null) throw new DataValidateException("Session not found!");
+            entityManager.getTransaction().begin();
+            sessionRepository.remove(session);
+            entityManager.getTransaction().commit();
+            return session.getDTO();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw new DataValidateException(e.getMessage());
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Override
+    public Collection<SessionDTO> findAll() throws DataValidateException {
+        @NotNull final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        @NotNull final ISessionRepository sessionRepository = new SessionRepository(entityManager);
+        try {
+            entityManager.getTransaction().begin();
+            @Nullable final Collection<Session> sessions = sessionRepository
+                    .findAll();
+            if (sessions == null) throw new DataValidateException("Sessions not found!");
+            entityManager.getTransaction().commit();
+            return sessions
+                    .stream()
+                    .map(Session::getDTO)
+                    .collect(Collectors.toList());
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw new DataValidateException(e.getMessage());
+        } finally {
+            entityManager.close();
+        }
+    }
+
+    @Override
+    public SessionDTO create(
+            @Nullable final UserDTO userDTO)
+            throws DataValidateException {
         @NotNull final String cycle = propertyService.getCycle();
         @NotNull final String salt = propertyService.getSalt();
-        @NotNull final Session session = new Session();
-        session.setTimeStamp(new Date());
-        session.setUserId(userId);
-        session.setSignature(SignatureUtil.sign(session, salt, Integer.parseInt(cycle)));
-        @Nullable SqlSession sqlSession = null;
+        @NotNull final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        @NotNull final ISessionRepository sessionRepository = new SessionRepository(entityManager);
         try {
-            sqlSession = sessionFactory.openSession();
-            sqlSession.getMapper(ISessionRepository.class).persist(session);
-            sqlSession.commit();
-            return session;
+            entityManager.getTransaction().begin();
+            @NotNull final Session session = new Session();
+            session.setTimestamp(new Date());
+            session.setUser(getUser(userDTO.getId(), entityManager));
+            session.setSignature(SignatureUtil.sign(userDTO, salt, Integer.parseInt(cycle)));
+            sessionRepository
+                    .persist(session);
+            entityManager.getTransaction().commit();
+            return session.getDTO();
         } catch (Exception e) {
-            if (sqlSession != null) sqlSession.rollback();
+            entityManager.getTransaction().rollback();
+            throw new DataValidateException(e.getMessage());
         } finally {
-            if (sqlSession != null) sqlSession.close();
+            entityManager.close();
         }
-        return null;
     }
 
     @Override
-    public void validate(@Nullable Session session) throws AuthenticationSecurityException {
-        if (session == null)
-            throw new AuthenticationSecurityException("Session is invalid: \nSession must not be null! Please re-login!");
-        if (session.getSignature() == null)
-            throw new AuthenticationSecurityException("Session is invalid: \nSignature must not be null! Please re-login!");
-        if (session.getUserId() == null)
-            throw new AuthenticationSecurityException("Session is invalid: \nUser must not be null! Please re-login!");
-        if (session.getTimeStamp() == null)
-            throw new AuthenticationSecurityException("Session is invalid: \nTime must not be null! Please re-login!");
-        if (findOne(session.getId()) == null)
-            throw new AuthenticationSecurityException("Session is invalid: \nSession not found! Please re-login!");
-        if (!session.getSignature().equals(findOne(session.getId()).getSignature()))
-            throw new AuthenticationSecurityException("Session is invalid: \nSession signature is wrong! Please re-login!");
+    public void validate(
+            @Nullable final SessionDTO sessionDTO)
+            throws AuthenticationSecurityException, DataValidateException {
+        if (!sessionDTO.getSignature().equals(findOne(sessionDTO.getId()).getSignature()))
+            throw new AuthenticationSecurityException("SessionDTO is invalid: \nSessionDTO signature is wrong! Please re-login!");
     }
 
     @Override
-    public boolean validateAdmin(@Nullable Session session) throws AuthenticationSecurityException {
-        validate(session);
-        @Nullable User user = null;
-        try(SqlSession sqlSession = sessionFactory.openSession()){
-            user =  sqlSession.getMapper(IUserRepository.class).findOne(session.getUserId());
+    public void validateAdmin(
+            @Nullable final SessionDTO sessionDTO)
+            throws AuthenticationSecurityException, DataValidateException {
+        validate(sessionDTO);
+        @NotNull final EntityManager entityManager = entityManagerFactory.createEntityManager();
+        try {
+            entityManager.getTransaction().begin();
+            @NotNull User user = getUser(sessionDTO.getUserId(), entityManager);
+            if (!user.getRole().equals(Role.ADMINISTRATOR))
+                throw new AuthenticationSecurityException("Forbidden action for your role!");
+            entityManager.getTransaction().commit();
+        } catch (Exception e) {
+            entityManager.getTransaction().rollback();
+            throw new DataValidateException(e.getMessage());
+        } finally {
+            entityManager.close();
         }
-        if (user==null) throw new AuthenticationSecurityException("User does not found!");
-        if (!user.getRole().equals(Role.ADMINISTRATOR.toString()))
-            throw new AuthenticationSecurityException("Forbidden action for your role!");
-        return false;
+    }
+
+    private User getUser(@NotNull final String userId, @NotNull final EntityManager em) throws DataValidateException {
+        @NotNull final IUserRepository userRepository = new UserRepository(em);
+        @Nullable final User user = userRepository.findOne(userId);
+        if (user == null) throw new DataValidateException("User not found!");
+        return user;
     }
 }

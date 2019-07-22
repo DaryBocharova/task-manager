@@ -16,50 +16,50 @@ import java.util.Collection;
 public interface ITaskEndpoint extends IEndPoint {
 
     @WebMethod
-    TaskDTO createTask(@WebParam(name = "task") @NotNull final TaskDTO taskDTO,
+    void createTask(@WebParam(name = "task") @NotNull final TaskDTO taskDTO,
                        @WebParam(name = "session") @NotNull final SessionDTO sessionDTO) throws
             AuthenticationSecurityException, DataValidateException;
 
     @WebMethod
-    TaskDTO editTask(@WebParam(name = "task") @NotNull final TaskDTO taskDTO,
+    void editTask(@WebParam(name = "task") @NotNull final TaskDTO taskDTO,
                      @WebParam(name = "session") @NotNull final SessionDTO sessionDTO) throws
             AuthenticationSecurityException, DataValidateException;
 
     @WebMethod
-    TaskDTO findOneTask(@WebParam(name = "session") @NotNull final Session session,
+    TaskDTO findOneTask(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO,
                         @WebParam(name = "id") @NotNull final String id) throws AuthenticationSecurityException,
             DataValidateException;
 
     @WebMethod
-    TaskDTO removeTask(@WebParam(name = "session") @NotNull final Session session,
+    void removeTask(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO,
                        @WebParam(name = "id") @NotNull final String id) throws AuthenticationSecurityException,
             DataValidateException;
 
     @WebMethod
-    Collection<TaskDTO> findAllTaskByProjectId(@WebParam(name = "session") @NotNull final Session session,
+    Collection<TaskDTO> findAllTaskByProjectId(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO,
                                                @WebParam(name = "id") @NotNull final String id) throws
             AuthenticationSecurityException, DataValidateException;
 
     @WebMethod
-    Collection<TaskDTO> findAllTaskByUserId(@WebParam(name = "session") @NotNull final Session session) throws
+    Collection<TaskDTO> findAllTaskByUserId(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO) throws
             AuthenticationSecurityException, DataValidateException;
 
     @WebMethod
-    void removeAllTaskByProjectId(@WebParam(name = "session") @NotNull final Session session,
+    void removeAllTaskByProjectId(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO,
                                   @WebParam(name = "id") @NotNull final String id) throws AuthenticationSecurityException,
             DataValidateException;
 
     @WebMethod
-    void removeAllTaskByUserId(@WebParam(name = "session") @NotNull final Session session) throws
+    void removeAllTaskByUserId(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO) throws
             AuthenticationSecurityException, DataValidateException;
 
     @WebMethod
-    Collection<TaskDTO> sortAllTaskByUserId(@WebParam(name = "session") @NotNull final Session session,
+    Collection<TaskDTO> sortAllTaskByUserId(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO,
                                             @WebParam(name = "parameter") @NotNull final String parameter) throws
             AuthenticationSecurityException, DataValidateException;
 
     @WebMethod
-    Collection<TaskDTO> findAllTaskByPartOfNameOrDescription(@WebParam(name = "session") @NotNull final Session session,
+    Collection<TaskDTO> findAllTaskByPartOfNameOrDescription(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO,
                                                              @WebParam(name = "name") @NotNull final String name,
                                                              @WebParam(name = "description") @NotNull final String description)
             throws AuthenticationSecurityException, DataValidateException;

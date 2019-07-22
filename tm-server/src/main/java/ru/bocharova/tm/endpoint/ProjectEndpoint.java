@@ -35,7 +35,7 @@ public class ProjectEndpoint implements IProjectEndpoint {
 
     @Override
     @WebMethod
-     public void createProject(
+    public void createProject(
             @WebParam(name = "session") @Nullable final SessionDTO sessionDTO,
             @WebParam(name = "project") @Nullable final ProjectDTO projectDTO)
             throws AuthenticationSecurityException, DataValidateException {
@@ -44,53 +44,61 @@ public class ProjectEndpoint implements IProjectEndpoint {
     }
 
     @Override
-    public void editProject(@WebParam(name = "session") @NotNull final SessionDTO session,
-                                  @WebParam(name = "id") @NotNull final String id,
-                                  @WebParam(name = "name") @NotNull final String name,
-                                  @WebParam(name = "description") @NotNull final String description,
-                                  @WebParam(name = "status") @NotNull final String status) throws AuthenticationSecurityException {
-        sessionService.validate(session);
-        return projectService.edit(id, name, description, status, session.getUserId());
+    public void editProject(
+            @WebParam(name = "session") @Nullable final SessionDTO sessionDTO,
+            @WebParam(name = "project") @Nullable final ProjectDTO projectDTO)
+            throws AuthenticationSecurityException, DataValidateException {
+        sessionService.validate(sessionDTO);
+        projectService.edit(projectDTO);
     }
 
     @Override
-    public ProjectDTO findOneProject(@WebParam(name = "session") @NotNull final SessionDTO session,
-                                     @WebParam(name = "id") @NotNull final String id) throws AuthenticationSecurityException {
-        sessionService.validate(session);
-        return projectService.findOne(id, session.getUserId());
+    public ProjectDTO findOneProject(
+            @WebParam(name = "session") @Nullable final SessionDTO sessionDTO,
+            @WebParam(name = "id") @Nullable final String id)
+            throws AuthenticationSecurityException, DataValidateException{
+        sessionService.validate(sessionDTO);
+        return projectService.findOne(id, sessionDTO.getUserId());
     }
 
     @Override
-    public ProjectDTO removeProject(@WebParam(name = "session") @NotNull final SessionDTO session,
-                                    @WebParam(name = "id") @NotNull final String id) throws AuthenticationSecurityException {
-        sessionService.validate(session);
-        return projectService.remove(id, session.getUserId());
+    public void removeProject(
+            @WebParam(name = "session") @Nullable final SessionDTO sessionDTO,
+            @WebParam(name = "id") @Nullable final String id)
+            throws AuthenticationSecurityException, DataValidateException {
+        sessionService.validate(sessionDTO);
+        projectService.remove(id, sessionDTO.getUserId());
     }
 
     @Override
-    public Collection<ProjectDTO> findAllProjectByUserId(@WebParam(name = "session") @NotNull final SessionDTO session) throws AuthenticationSecurityException {
-        sessionService.validate(session);
-        return projectService.findAllByUserId(session.getUserId());
+    public Collection<ProjectDTO> findAllProjectByUserId(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO) throws AuthenticationSecurityException, DataValidateException {
+        sessionService.validate(sessionDTO);
+        return projectService.findAllByUserId(sessionDTO.getUserId());
     }
 
     @Override
-    public void removeAllProjectByUserId(@WebParam(name = "session") @NotNull final SessionDTO session) throws AuthenticationSecurityException {
-        sessionService.validate(session);
-        projectService.removeAllByUserId(session.getUserId());
+    public void removeAllProjectByUserId(@WebParam(name = "session") @Nullable final SessionDTO sessionDTO)
+            throws AuthenticationSecurityException, DataValidateException {
+        sessionService.validate(sessionDTO);
+        projectService.removeAllByUserId(sessionDTO.getUserId());
     }
 
     @Override
-    public Collection<ProjectDTO> sortAllProjectByUserId(@WebParam(name = "session") @NotNull final SessionDTO session,
-                                                         @WebParam(name = "comparator") @NotNull final String comparator) throws AuthenticationSecurityException {
-        sessionService.validate(session);
-        return projectService.sortAllByUserId(session.getUserId(), comparator);
+    public Collection<ProjectDTO> sortAllProjectByUserId(
+            @WebParam(name = "session") @Nullable final SessionDTO sessionDTO,
+            @WebParam(name = "parameter") @Nullable final String parameter)
+            throws AuthenticationSecurityException, DataValidateException{
+        sessionService.validate(sessionDTO);
+        return projectService.sortAllByUserId(sessionDTO.getUserId(), parameter);
     }
 
     @Override
-    public Collection<ProjectDTO> findAllProjectByPartOfNameOrDescription(@WebParam(name = "session") @NotNull final SessionDTO session,
-                                                                          @WebParam(name = "name") @NotNull final String name,
-                                                                          @WebParam(name = "description") @NotNull final String description) throws AuthenticationSecurityException {
-        sessionService.validate(session);
-        return projectService.findAllByPartOfNameOrDescription(name, description, session.getUserId());
+    public Collection<ProjectDTO> findAllProjectByPartOfNameOrDescription(
+            @WebParam(name = "session") @Nullable final SessionDTO sessionDTO,
+            @WebParam(name = "name") @Nullable final String name,
+            @WebParam(name = "description") @Nullable final String description)
+            throws AuthenticationSecurityException, DataValidateException {
+        sessionService.validate(sessionDTO);
+        return projectService.findAllByPartOfNameOrDescription(name, description, sessionDTO.getUserId());
     }
 }
