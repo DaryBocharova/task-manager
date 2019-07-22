@@ -4,11 +4,9 @@ import lombok.AllArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.bocharova.tm.api.repository.ISessionRepository;
-import ru.bocharova.tm.entity.Session;
-import ru.bocharova.tm.entity.User;
+import ru.bocharova.tm.model.entity.*;
 
 import javax.persistence.EntityManager;
-import java.util.ArrayList;
 import java.util.Collection;
 
 @AllArgsConstructor

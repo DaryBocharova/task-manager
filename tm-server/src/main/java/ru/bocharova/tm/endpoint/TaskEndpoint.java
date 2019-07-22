@@ -2,8 +2,7 @@ package ru.bocharova.tm.endpoint;
 
 import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
-import ru.bocharova.tm.DTO.SessionDTO;
-import ru.bocharova.tm.DTO.TaskDTO;
+import ru.bocharova.tm.model.dto.*;
 import ru.bocharova.tm.api.endpoint.ITaskEndpoint;
 import ru.bocharova.tm.api.service.IServiceLocator;
 import ru.bocharova.tm.api.service.ISessionService;

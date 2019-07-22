@@ -3,11 +3,11 @@ package ru.bocharova.tm.service;
 import lombok.AllArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import ru.bocharova.tm.DTO.UserDTO;
+import ru.bocharova.tm.model.dto.UserDTO;
 import ru.bocharova.tm.api.service.IUserService;
 import ru.bocharova.tm.exception.AuthenticationSecurityException;
 import ru.bocharova.tm.api.repository.IUserRepository;
-import ru.bocharova.tm.entity.User;
+import ru.bocharova.tm.model.entity.User;
 import ru.bocharova.tm.exception.DataValidateException;
 import ru.bocharova.tm.repository.UserRepository;
 import javax.persistence.EntityManager;
@@ -44,8 +44,6 @@ public final class UserService implements IUserService {
             throws DataValidateException {
         @NotNull final User user = new User();
         user.setId(userDTO.getId());
-        user.setName(userDTO.getName());
-        user.setDescription(userDTO.getDescription());
         user.setLogin(userDTO.getLogin());
         user.setPassword(userDTO.getPassword());
         user.setRole(userDTO.getRole());
@@ -60,8 +58,6 @@ public final class UserService implements IUserService {
             entityManager.getTransaction().begin();
             @Nullable final User user = userRepository.findOne(userDTO.getId());
             if (user == null) throw new DataValidateException("User not found!");
-            user.setName(userDTO.getName());
-            user.setDescription(userDTO.getDescription());
             user.setLogin(userDTO.getLogin());
             user.setPassword(userDTO.getPassword());
             user.setRole(userDTO.getRole());

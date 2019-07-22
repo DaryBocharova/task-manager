@@ -1,8 +1,7 @@
 package ru.bocharova.tm.api.endpoint;
 
 import org.jetbrains.annotations.NotNull;
-import ru.bocharova.tm.DTO.SessionDTO;
-import ru.bocharova.tm.DTO.UserDTO;
+import ru.bocharova.tm.model.dto.*;
 import ru.bocharova.tm.exception.AuthenticationSecurityException;
 import ru.bocharova.tm.exception.DataValidateException;
 
@@ -15,17 +14,17 @@ import java.util.Collection;
 public interface IUserEndpoint extends IEndPoint {
 
     @WebMethod
-    UserDTO createUser(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO,
+    void createUser(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO,
                        @WebParam(name = "user") @NotNull final UserDTO userDTO) throws AuthenticationSecurityException,
             DataValidateException;
 
     @WebMethod
-    UserDTO changeUserPassword(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO,
+    void changeUserPassword(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO,
                                @WebParam(name = "user") @NotNull final UserDTO userDTO) throws AuthenticationSecurityException,
             DataValidateException;
 
     @WebMethod
-    UserDTO editUserProfile(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO,
+    void editUserProfile(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO,
                             @WebParam(name = "user") @NotNull final UserDTO userDTO) throws AuthenticationSecurityException,
             DataValidateException;
 

@@ -3,7 +3,7 @@ package ru.bocharova.tm.endpoint;
 import lombok.NoArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import ru.bocharova.tm.DTO.*;
+import ru.bocharova.tm.model.dto.*;
 import ru.bocharova.tm.api.endpoint.IProjectEndpoint;
 import ru.bocharova.tm.api.service.IProjectService;
 import ru.bocharova.tm.api.service.IServiceLocator;

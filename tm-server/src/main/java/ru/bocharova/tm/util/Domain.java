@@ -5,15 +5,12 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
-import ru.bocharova.tm.entity.Project;
-import ru.bocharova.tm.entity.Task;
-import ru.bocharova.tm.entity.User;
+import ru.bocharova.tm.model.entity.*;
 
 import javax.xml.bind.annotation.*;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.List;
 
 @Getter
 @Setter

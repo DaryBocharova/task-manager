@@ -2,7 +2,7 @@ package ru.bocharova.tm.api.endpoint;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import ru.bocharova.tm.DTO.SessionDTO;
+import ru.bocharova.tm.model.dto.SessionDTO;
 import ru.bocharova.tm.exception.AuthenticationSecurityException;
 import ru.bocharova.tm.exception.DataValidateException;
 

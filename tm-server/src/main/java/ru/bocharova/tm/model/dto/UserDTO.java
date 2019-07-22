@@ -1,4 +1,4 @@
-package ru.bocharova.tm.DTO;
+package ru.bocharova.tm.model.dto;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -8,21 +8,17 @@ import ru.bocharova.tm.enumerate.Role;
 
 import java.io.Serializable;
 
+@Getter
+@Setter
 @NoArgsConstructor
 public class UserDTO extends AbstractEntityDTO implements Serializable {
 
-    @Getter
-    @Setter
     @Nullable
     private String login = "";
 
-    @Getter
-    @Setter
     @Nullable
     private String password = "";
 
-    @Getter
-    @Setter
     @Nullable
     private Role role = Role.USER;
 }

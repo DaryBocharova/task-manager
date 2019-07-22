@@ -1,9 +1,7 @@
 package ru.bocharova.tm.api.repository;
 
 import org.jetbrains.annotations.NotNull;
-import ru.bocharova.tm.entity.Project;
-import ru.bocharova.tm.entity.Task;
-import ru.bocharova.tm.entity.User;
+import ru.bocharova.tm.model.entity.*;
 
 import java.util.Collection;
 

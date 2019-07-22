@@ -1,8 +1,7 @@
 package ru.bocharova.tm.api.repository;
 
 import org.jetbrains.annotations.NotNull;
-import ru.bocharova.tm.entity.Session;
-import ru.bocharova.tm.entity.User;
+import ru.bocharova.tm.model.entity.*;
 
 import java.util.Collection;
 
@@ -21,6 +20,4 @@ public interface ISessionRepository {
     Session merge(@NotNull final Session session);
 
     Collection<Session> findAllByUserId(@NotNull final User user);
-
-    void remove(String id);
 }

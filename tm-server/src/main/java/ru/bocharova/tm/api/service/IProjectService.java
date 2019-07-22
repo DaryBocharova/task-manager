@@ -1,8 +1,8 @@
 package ru.bocharova.tm.api.service;
 
 import org.jetbrains.annotations.NotNull;
-import ru.bocharova.tm.DTO.ProjectDTO;
 import ru.bocharova.tm.exception.DataValidateException;
+import ru.bocharova.tm.model.dto.ProjectDTO;
 
 import java.util.Collection;
 

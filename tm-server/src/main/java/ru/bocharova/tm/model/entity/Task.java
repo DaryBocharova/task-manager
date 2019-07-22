@@ -1,29 +1,21 @@
-package ru.bocharova.tm.entity;
+package ru.bocharova.tm.model.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import ru.bocharova.tm.DTO.TaskDTO;
+import ru.bocharova.tm.model.dto.TaskDTO;
 
 import javax.persistence.*;
 import java.io.Serializable;
 
-@Table(name = "app_task")
-@NamedEntityGraph(
-        name = "task-graph",
-        attributeNodes = {
-                @NamedAttributeNode("project"),
-                @NamedAttributeNode("user")})
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
-public class Task extends AbstractEntityBase implements Serializable {
-
-    @Id
-    private String id;
+@Table(name = "app_task")
+public class Task extends BaseEntity implements Serializable {
 
     @Nullable
     @ManyToOne
@@ -47,6 +39,4 @@ public class Task extends AbstractEntityBase implements Serializable {
         dto.setProjectId(project.getId());
         return dto;
     }
-
-
 }

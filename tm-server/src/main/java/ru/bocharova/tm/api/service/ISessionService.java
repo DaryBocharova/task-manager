@@ -2,8 +2,7 @@ package ru.bocharova.tm.api.service;
 
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import ru.bocharova.tm.DTO.SessionDTO;
-import ru.bocharova.tm.DTO.UserDTO;
+import ru.bocharova.tm.model.dto.*;
 import ru.bocharova.tm.exception.AuthenticationSecurityException;
 import ru.bocharova.tm.exception.DataValidateException;
 

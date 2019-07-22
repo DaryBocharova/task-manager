@@ -1,18 +1,27 @@
-package ru.bocharova.tm.DTO;
+package ru.bocharova.tm.model.entity;
 
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
+
+import javax.persistence.Column;
+import javax.persistence.Id;
+import javax.persistence.MappedSuperclass;
 
 import java.io.Serializable;
 import java.util.UUID;
 
 @Getter
 @Setter
-public class AbstractEntityDTO extends AbstractEntityBaseDTO  implements Serializable {
+@NoArgsConstructor
+@MappedSuperclass
+public abstract class AbstractEntity implements Serializable {
 
+    @Id
     @NotNull
+    @Column(name = "id")
     protected String id = UUID.randomUUID().toString();
 
     @Nullable
@@ -20,7 +29,4 @@ public class AbstractEntityDTO extends AbstractEntityBaseDTO  implements Seriali
 
     @Nullable
     protected String description = null;
-
-    @Nullable
-    protected String userId = "";
 }

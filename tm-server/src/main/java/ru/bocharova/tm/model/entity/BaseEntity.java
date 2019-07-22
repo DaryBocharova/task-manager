@@ -1,4 +1,4 @@
-package ru.bocharova.tm.entity;
+package ru.bocharova.tm.model.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -14,7 +14,7 @@ import java.util.Date;
 @Setter
 @MappedSuperclass
 @NoArgsConstructor
-public abstract class AbstractEntityBase extends AbstractEntity implements Serializable {
+public class BaseEntity extends AbstractEntity implements Serializable {
 
     @Column
     @Nullable
@@ -34,4 +34,3 @@ public abstract class AbstractEntityBase extends AbstractEntity implements Seria
     @JoinColumn(name = "user_id")
     protected User user;
 }
-

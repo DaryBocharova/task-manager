@@ -9,17 +9,17 @@ import java.io.InputStream;
 import java.util.Properties;
 
 public class PropertyService implements IPropertyService {
-
     @NotNull
-    final Properties properties = new Properties();
+    private final Properties properties = new Properties();
 
     public PropertyService() {
-        try (InputStream resourceStream = AppServer.class.getClassLoader().getResourceAsStream("application.properties")) {
+        try (InputStream resourceStream = AppServer.class.getClassLoader().getResourceAsStream("db.properties")) {
             properties.load(resourceStream);
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
+
 
     @Override
     public String getJdbcPassword() {

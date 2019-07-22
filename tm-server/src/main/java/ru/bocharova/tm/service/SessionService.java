@@ -1,28 +1,23 @@
 package ru.bocharova.tm.service;
 
 import lombok.AllArgsConstructor;
-import org.apache.ibatis.session.SqlSession;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import ru.bocharova.tm.DTO.SessionDTO;
-import ru.bocharova.tm.DTO.UserDTO;
+import ru.bocharova.tm.model.dto.*;
 import ru.bocharova.tm.api.repository.ISessionRepository;
 import ru.bocharova.tm.api.service.IPropertyService;
 import ru.bocharova.tm.api.service.ISessionService;
 import ru.bocharova.tm.enumerate.Role;
 import ru.bocharova.tm.exception.AuthenticationSecurityException;
 import ru.bocharova.tm.api.repository.IUserRepository;
-import ru.bocharova.tm.entity.Session;
-import ru.bocharova.tm.entity.User;
+import ru.bocharova.tm.model.entity.*;
 import ru.bocharova.tm.exception.DataValidateException;
 import ru.bocharova.tm.repository.SessionRepository;
 import ru.bocharova.tm.repository.UserRepository;
 import ru.bocharova.tm.util.SignatureUtil;
-import ru.bocharova.tm.util.StringValidator;
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
-import java.io.IOException;
 import java.util.Collection;
 import java.util.Date;
 import java.util.stream.Collectors;

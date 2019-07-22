@@ -1,28 +1,21 @@
-package ru.bocharova.tm.entity;
+package ru.bocharova.tm.model.entity;
 
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import ru.bocharova.tm.DTO.SessionDTO;
+import ru.bocharova.tm.model.dto.SessionDTO;
 
 import javax.persistence.*;
 import java.util.Date;
 
+@Entity
 @Getter
 @Setter
 @NoArgsConstructor
-@Entity
 @Table(name = "app_session")
-@NamedEntityGraph(
-        name = "session-graph",
-        attributeNodes = {
-                @NamedAttributeNode("user")})
-public class Session extends AbstractEntityBase {
-
-    @Id
-    private String id;
+public class Session extends AbstractEntity {
 
     @Nullable
     private String signature;

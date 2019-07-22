@@ -1,8 +1,7 @@
 package ru.bocharova.tm.util;
 
 import org.jetbrains.annotations.NotNull;
-import ru.bocharova.tm.entity.Project;
-import ru.bocharova.tm.entity.Task;
+import ru.bocharova.tm.model.entity.*;
 import ru.bocharova.tm.enumerate.Status;
 
 import java.util.*;
@@ -43,8 +42,8 @@ public class ComparatorUtil {
         Comparator<Project> comparatorStatus = new Comparator<Project>() {
             @Override
             public int compare(Project o1, Project o2) {
-                String status1 = o1.getStatus();
-                String status2 = o2.getStatus();
+                Status status1 = o1.getStatus();
+                Status status2 = o2.getStatus();
                 return status1.compareTo(status2);
             }
         };

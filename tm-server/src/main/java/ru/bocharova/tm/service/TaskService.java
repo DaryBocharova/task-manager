@@ -3,18 +3,17 @@ package ru.bocharova.tm.service;
 import lombok.AllArgsConstructor;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
-import ru.bocharova.tm.DTO.TaskDTO;
+import ru.bocharova.tm.model.dto.TaskDTO;
 import ru.bocharova.tm.api.repository.IProjectRepository;
 import ru.bocharova.tm.api.repository.ITaskRepository;
 import ru.bocharova.tm.api.repository.IUserRepository;
 import ru.bocharova.tm.api.service.ITaskService;
-import ru.bocharova.tm.entity.Project;
-import ru.bocharova.tm.entity.User;
-import ru.bocharova.tm.entity.Task;
+import ru.bocharova.tm.model.entity.*;
 import ru.bocharova.tm.exception.DataValidateException;
 import ru.bocharova.tm.repository.ProjectRepository;
 import ru.bocharova.tm.repository.TaskRepository;
 import ru.bocharova.tm.repository.UserRepository;
+
 
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -47,7 +46,7 @@ public final class TaskService implements ITaskService {
     }
 
     @Override
-    public void edit(@Nullable final TaskDTO taskDTO) {
+    public void edit(@NotNull final TaskDTO taskDTO) {
         @NotNull final EntityManager entityManager = entityManagerFactory.createEntityManager();
         @NotNull final ITaskRepository taskRepository = new TaskRepository(entityManager);
         try {
@@ -71,8 +70,8 @@ public final class TaskService implements ITaskService {
     }
 
     @Override
-    public TaskDTO findOne(@Nullable final String id,
-                           @Nullable final String userId)
+    public ru.bocharova.tm.model.dto.TaskDTO findOne(@Nullable final String id,
+                                                     @Nullable final String userId)
             throws DataValidateException {
         @NotNull final EntityManager entityManager = entityManagerFactory.createEntityManager();
         @NotNull final ITaskRepository taskRepository = new TaskRepository(entityManager);

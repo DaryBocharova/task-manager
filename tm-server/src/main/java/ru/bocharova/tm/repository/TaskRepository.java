@@ -6,9 +6,7 @@ import lombok.SneakyThrows;
 import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 import ru.bocharova.tm.api.repository.ITaskRepository;
-import ru.bocharova.tm.entity.Project;
-import ru.bocharova.tm.entity.Task;
-import ru.bocharova.tm.entity.User;
+import ru.bocharova.tm.model.entity.*;
 
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
@@ -18,6 +16,7 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.*;
 
+@SuppressWarnings("JpaQlInspection")
 @AllArgsConstructor
 public final class TaskRepository implements ITaskRepository {
 
