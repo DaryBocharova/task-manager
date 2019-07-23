@@ -34,8 +34,8 @@ public class UserEndpoint implements IUserEndpoint {
     @Override
     @WebMethod
     public void createUser(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO,
-                           @WebParam(name = "user") @NotNull final UserDTO userDTO) throws AuthenticationSecurityException,
-            DataValidateException {
+                           @WebParam(name = "user") @NotNull final UserDTO userDTO
+    ) throws AuthenticationSecurityException, DataValidateException {
         sessionService.validateAdmin(sessionDTO);
         userService.create(userDTO);
     }
@@ -43,8 +43,8 @@ public class UserEndpoint implements IUserEndpoint {
     @Override
     @WebMethod
     public void changeUserPassword(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO,
-                                   @WebParam(name = "user") @NotNull final UserDTO userDTO) throws AuthenticationSecurityException,
-            DataValidateException{
+                                   @WebParam(name = "user") @NotNull final UserDTO userDTO
+    ) throws AuthenticationSecurityException, DataValidateException{
         sessionService.validateAdmin(sessionDTO);
         userService.edit(userDTO);
     }
@@ -52,8 +52,8 @@ public class UserEndpoint implements IUserEndpoint {
     @Override
     @WebMethod
     public void editUserProfile(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO,
-                                @WebParam(name = "user") @NotNull final UserDTO userDTO) throws AuthenticationSecurityException,
-            DataValidateException{
+                                @WebParam(name = "user") @NotNull final UserDTO userDTO
+    ) throws AuthenticationSecurityException, DataValidateException{
         sessionService.validateAdmin(sessionDTO);
         userService.edit(userDTO);
     }
@@ -61,24 +61,24 @@ public class UserEndpoint implements IUserEndpoint {
     @Override
     @WebMethod
     public UserDTO findUserByLogin(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO,
-                                @WebParam(name = "login") @NotNull final String login) throws AuthenticationSecurityException,
-            DataValidateException{
+                                @WebParam(name = "login") @NotNull final String login
+    ) throws AuthenticationSecurityException, DataValidateException{
         sessionService.validateAdmin(sessionDTO);
         return userService.findByLogin(login);
     }
 
     @Override
     @WebMethod
-    public UserDTO getUserBySession(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO) throws AuthenticationSecurityException,
-            DataValidateException {
+    public UserDTO getUserBySession(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO)
+            throws AuthenticationSecurityException, DataValidateException {
         sessionService.validateAdmin(sessionDTO);
         return userService.findOne(sessionDTO.getUserId());
     }
 
     @Override
     @WebMethod
-    public Collection<UserDTO> findAllUser(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO) throws AuthenticationSecurityException,
-            DataValidateException {
+    public Collection<UserDTO> findAllUser(@WebParam(name = "session") @NotNull final SessionDTO sessionDTO)
+            throws AuthenticationSecurityException, DataValidateException {
         sessionService.validateAdmin(sessionDTO);
         return userService.findAll();
     }

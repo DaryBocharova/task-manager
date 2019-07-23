@@ -171,7 +171,8 @@ public final class UserService implements IUserService {
     }
 
     @Override
-    public UserDTO authenticationUser(@NotNull final String login, @NotNull final String password) throws AuthenticationSecurityException, DataValidateException {
+    public UserDTO authenticationUser(@NotNull final String login, @NotNull final String password)
+            throws AuthenticationSecurityException, DataValidateException {
             @NotNull final EntityManager entityManager = entityManagerFactory.createEntityManager();
             @NotNull final IUserRepository userRepository = new UserRepository(entityManager);
             try {

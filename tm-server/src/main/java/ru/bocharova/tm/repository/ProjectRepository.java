@@ -62,8 +62,7 @@ public final class ProjectRepository implements IProjectRepository {
     }
 
     @Override
-    public Collection<Project> findAllByUserId(
-            @NotNull final User user) {
+    public Collection<Project> findAllByUserId(@NotNull final User user) {
         @NotNull final Collection<Project> projects = entityManager
                 .createQuery("SELECT e FROM Project e WHERE e.user = :user", Project.class)
                 .setParameter("user", user)
@@ -92,9 +91,7 @@ public final class ProjectRepository implements IProjectRepository {
     }
 
     @Override
-    public Collection<Project> sortAllByUserId(
-            @NotNull final User user,
-            @NotNull final String parameter) {
+    public Collection<Project> sortAllByUserId(@NotNull final User user, @NotNull final String parameter) {
         @NotNull final CriteriaBuilder criteriaBuilder = entityManager.getCriteriaBuilder();
         @NotNull final CriteriaQuery<Project> criteriaQuery = criteriaBuilder.createQuery(Project.class);
         @NotNull final Root<Project> projectRoot = criteriaQuery.from(Project.class);
@@ -106,10 +103,9 @@ public final class ProjectRepository implements IProjectRepository {
     }
 
     @Override
-    public Collection<Project> findAllByPartOfNameOrDescription(
-            @NotNull final String name,
-            @NotNull final String description,
-            @NotNull final User user) {
+    public Collection<Project> findAllByPartOfNameOrDescription(@NotNull final String name,@NotNull final String description,
+            @NotNull final User user)
+    {
         @NotNull final String query = "SELECT e FROM Project e WHERE e.user = :user and (e.name like :name OR e.description LIKE :description)";
         @NotNull final List<Project> projects = entityManager.createQuery(query, Project.class)
                 .setParameter("user", user)

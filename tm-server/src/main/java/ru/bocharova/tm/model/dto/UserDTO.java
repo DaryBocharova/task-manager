@@ -13,6 +13,12 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class UserDTO extends AbstractEntityDTO implements Serializable {
 
+    public UserDTO(@Nullable String login, @Nullable String password, @Nullable Role role) {
+        this.login = login;
+        this.password = password;
+        this.role = role;
+    }
+
     @Nullable
     private String login = "";
 

@@ -22,7 +22,8 @@ public final class ServiceLocator implements IServiceLocator {
     final private ISessionService sessionService;
 
     public ServiceLocator(@NotNull IProjectService projectService,@NotNull ITaskService taskService,
-                          @NotNull IUserService userService, @NotNull ISessionService sessionService) {
+                          @NotNull IUserService userService, @NotNull ISessionService sessionService
+    ) {
         this.projectService = projectService;
         this.sessionService = sessionService;
         this.taskService = taskService;

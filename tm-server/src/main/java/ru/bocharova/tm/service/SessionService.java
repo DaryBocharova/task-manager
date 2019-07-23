@@ -112,8 +112,7 @@ public class SessionService implements ISessionService {
     }
 
     @Override
-    public SessionDTO create(
-            @Nullable final UserDTO userDTO)
+    public SessionDTO create(@Nullable final UserDTO userDTO)
             throws DataValidateException {
         @NotNull final String cycle = propertyService.getCycle();
         @NotNull final String salt = propertyService.getSalt();
@@ -138,16 +137,14 @@ public class SessionService implements ISessionService {
     }
 
     @Override
-    public void validate(
-            @Nullable final SessionDTO sessionDTO)
+    public void validate(@Nullable final SessionDTO sessionDTO)
             throws AuthenticationSecurityException, DataValidateException {
         if (!sessionDTO.getSignature().equals(findOne(sessionDTO.getId()).getSignature()))
             throw new AuthenticationSecurityException("SessionDTO is invalid: \nSessionDTO signature is wrong! Please re-login!");
     }
 
     @Override
-    public void validateAdmin(
-            @Nullable final SessionDTO sessionDTO)
+    public void validateAdmin(@Nullable final SessionDTO sessionDTO)
             throws AuthenticationSecurityException, DataValidateException {
         validate(sessionDTO);
         @NotNull final EntityManager entityManager = entityManagerFactory.createEntityManager();

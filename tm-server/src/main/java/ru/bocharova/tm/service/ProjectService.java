@@ -24,8 +24,7 @@ public final class ProjectService implements IProjectService {
     final EntityManagerFactory entityManagerFactory;
 
     @Override
-    public void create(
-            @Nullable final ProjectDTO projectDTO)
+    public void create(@Nullable final ProjectDTO projectDTO)
             throws DataValidateException {
         @NotNull final EntityManager entityManager = entityManagerFactory.createEntityManager();
         @NotNull final IProjectRepository projectRepository = new ProjectRepository(entityManager);
@@ -44,8 +43,7 @@ public final class ProjectService implements IProjectService {
     }
 
     @Override
-    public void edit(
-            @Nullable final ProjectDTO projectDTO) {
+    public void edit(@Nullable final ProjectDTO projectDTO) {
         @NotNull final EntityManager entityManager = entityManagerFactory.createEntityManager();
         @NotNull final IProjectRepository projectRepository = new ProjectRepository(entityManager);
         try {
@@ -69,9 +67,7 @@ public final class ProjectService implements IProjectService {
     }
 
     @Override
-    public ProjectDTO findOne(
-            @Nullable final String id,
-            @Nullable final String userId)
+    public ProjectDTO findOne(@Nullable final String id, @Nullable final String userId)
             throws DataValidateException {
         @NotNull final EntityManager entityManager = entityManagerFactory.createEntityManager();
         @NotNull final IProjectRepository projectRepository = new ProjectRepository(entityManager);
@@ -91,9 +87,7 @@ public final class ProjectService implements IProjectService {
     }
 
     @Override
-    public void remove(
-            @Nullable final String id,
-            @Nullable final String userId)
+    public void remove(@Nullable final String id, @Nullable final String userId)
             throws DataValidateException {
         @NotNull final EntityManager entityManager = entityManagerFactory.createEntityManager();
         @NotNull final IProjectRepository projectRepository = new ProjectRepository(entityManager);
@@ -132,8 +126,7 @@ public final class ProjectService implements IProjectService {
     }
 
     @Override
-    public ProjectDTO findOne(
-            @Nullable final String id)
+    public ProjectDTO findOne(@Nullable final String id)
             throws DataValidateException {
         @NotNull final EntityManager entityManager = entityManagerFactory.createEntityManager();
         @NotNull final IProjectRepository projectRepository = new ProjectRepository(entityManager);
@@ -153,8 +146,7 @@ public final class ProjectService implements IProjectService {
     }
 
     @Override
-    public ProjectDTO remove(
-            @Nullable final String id)
+    public ProjectDTO remove(@Nullable final String id)
             throws DataValidateException {
         @NotNull final EntityManager entityManager = entityManagerFactory.createEntityManager();
         @NotNull final IProjectRepository projectRepository = new ProjectRepository(entityManager);
@@ -199,9 +191,7 @@ public final class ProjectService implements IProjectService {
     }
 
     @Override
-    public Collection<ProjectDTO> findAllByUserId(
-            @Nullable final String id)
-            throws DataValidateException {
+    public Collection<ProjectDTO> findAllByUserId(@Nullable final String id) throws DataValidateException {
         @NotNull final EntityManager entityManager = entityManagerFactory.createEntityManager();
         @NotNull final IProjectRepository projectRepository = new ProjectRepository(entityManager);
         try {
@@ -223,9 +213,7 @@ public final class ProjectService implements IProjectService {
     }
 
     @Override
-    public void removeAllByUserId(
-            @Nullable final String id)
-            throws DataValidateException {
+    public void removeAllByUserId(@Nullable final String id) throws DataValidateException {
         @NotNull final EntityManager entityManager = entityManagerFactory.createEntityManager();
         @NotNull final IProjectRepository projectRepository = new ProjectRepository(entityManager);
         try {
@@ -242,9 +230,7 @@ public final class ProjectService implements IProjectService {
     }
 
     @Override
-    public Collection<ProjectDTO> sortAllByUserId(
-            @Nullable final String id,
-            @Nullable final String parameter)
+    public Collection<ProjectDTO> sortAllByUserId(@Nullable final String id, @Nullable final String parameter)
             throws DataValidateException {
         if ("order".equals(parameter)) return findAllByUserId(id);
         @NotNull final EntityManager entityManager = entityManagerFactory.createEntityManager();
@@ -268,11 +254,9 @@ public final class ProjectService implements IProjectService {
     }
 
     @Override
-    public Collection<ProjectDTO> findAllByPartOfNameOrDescription(
-            @Nullable final String name,
-            @Nullable final String description,
-            @Nullable final String userId)
-            throws DataValidateException {
+    public Collection<ProjectDTO> findAllByPartOfNameOrDescription(@Nullable final String name, @Nullable final String description,
+            @Nullable final String userId
+    ) throws DataValidateException {
         @NotNull final EntityManager entityManager = entityManagerFactory.createEntityManager();
         @NotNull final IProjectRepository projectRepository = new ProjectRepository(entityManager);
         try {
@@ -293,9 +277,7 @@ public final class ProjectService implements IProjectService {
         }
     }
 
-    private Project convertDTOtoProject(
-            @NotNull final ProjectDTO projectDTO,
-            @NotNull final EntityManager entityManager)
+    private Project convertDTOtoProject(@NotNull final ProjectDTO projectDTO, @NotNull final EntityManager entityManager)
             throws DataValidateException {
         @NotNull final Project project = new Project();
         project.setId(projectDTO.getId());
@@ -308,8 +290,8 @@ public final class ProjectService implements IProjectService {
         return project;
     }
 
-    private User getUser(@NotNull final String userId, @NotNull final EntityManager em) throws DataValidateException {
-        @NotNull final IUserRepository userRepository = new UserRepository(em);
+    private User getUser(@NotNull final String userId, @NotNull final EntityManager entityManager) throws DataValidateException {
+        @NotNull final IUserRepository userRepository = new UserRepository(entityManager);
         @Nullable final User user = userRepository.findOne(userId);
         if (user == null) throw new DataValidateException("User not found!");
         return user;
