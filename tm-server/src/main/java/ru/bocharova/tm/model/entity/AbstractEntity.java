@@ -4,7 +4,6 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import org.jetbrains.annotations.NotNull;
-import org.jetbrains.annotations.Nullable;
 
 import javax.persistence.Column;
 import javax.persistence.Id;
@@ -23,10 +22,4 @@ public abstract class AbstractEntity implements Serializable {
     @NotNull
     @Column(name = "id")
     protected String id = UUID.randomUUID().toString();
-
-    @Nullable
-    protected String name = null;
-
-    @Nullable
-    protected String description = null;
 }

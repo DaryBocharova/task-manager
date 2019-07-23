@@ -31,8 +31,6 @@ public class Session extends AbstractEntity {
     public SessionDTO getDTO() {
         @NotNull final SessionDTO dto = new SessionDTO();
         dto.setId(id);
-        dto.setName(name);
-        dto.setDescription(description);
         dto.setSignature(signature);
         dto.setTimestamp(timestamp);
         dto.setUserId(user.getId());

@@ -50,8 +50,6 @@ public class User extends AbstractEntity implements Serializable {
         dto.setLogin(login);
         dto.setPassword(null);
         dto.setRole(role);
-        dto.setName(name);
-        dto.setDescription(description);
         return dto;
     }
 }

@@ -18,11 +18,11 @@ public class BaseEntity extends AbstractEntity implements Serializable {
 
     @Column
     @Nullable
-    protected Date dateBegin = null;
+    protected Date dateBegin = new Date();
 
     @Column
     @Nullable
-    protected Date dateEnd = null;
+    protected Date dateEnd = new Date();
 
     @Column
     @Nullable
@@ -33,4 +33,12 @@ public class BaseEntity extends AbstractEntity implements Serializable {
     @ManyToOne
     @JoinColumn(name = "user_id")
     protected User user;
+
+    @Column
+    @Nullable
+    protected String name = null;
+
+    @Column
+    @Nullable
+    protected String description = null;
 }

@@ -7,6 +7,7 @@ import org.hibernate.boot.MetadataSources;
 import org.hibernate.boot.registry.StandardServiceRegistry;
 import org.hibernate.boot.registry.StandardServiceRegistryBuilder;
 import org.jetbrains.annotations.NotNull;
+import ru.bocharova.tm.exception.DataValidateException;
 import ru.bocharova.tm.model.dto.*;
 import ru.bocharova.tm.api.service.*;
 import ru.bocharova.tm.model.entity.*;
@@ -34,7 +35,7 @@ public class Bootstrap {
         @NotNull final ISessionService sessionService = new SessionService(entityManagerFactory, propertyService);
         @NotNull final IServiceLocator serviceLocator = new ServiceLocator(projectService, taskService, userService, sessionService);
 
-//        generateTestData(serviceLocator);
+        generateTestData(serviceLocator);
         registryEndpoint(endpoints, serviceLocator);
     }
 
@@ -87,33 +88,33 @@ public class Bootstrap {
         return metadata.getSessionFactoryBuilder().build();
     }
 
-//    private void generateTestData(IServiceLocator serviceLocator) {
-//        @NotNull final IProjectService projectService = serviceLocator.getProjectService();
-//        @NotNull final ITaskService taskService = serviceLocator.getTaskService();
-//        @NotNull final IUserService userService = serviceLocator.getUserService();
-//        @NotNull final ISessionService sessionService = serviceLocator.getSessionService();
-//
-//        try {
-//            projectService.create(new ProjectDTO("My_project_1", "Description for my project 1", userService.findByLogin("admin").getId()));
-//            projectService.create(new ProjectDTO("My_project_2", "Description for my project 2", userService.findByLogin("admin").getId()));
-//            projectService.create(new ProjectDTO("My_project_3", "Description for my project 3", userService.findByLogin("user").getId()));
-//            projectService.create(new ProjectDTO("My_project_4", "Description for my project 4", userService.findByLogin("user").getId()));
-//
-//            for (ProjectDTO project : projectService.findAllByUserId(userService.findByLogin("admin").getId())) {
-//                taskService.create(new TaskDTO("task_100", "Description for task 100", project.getId(), userService.findByLogin("admin").getId()));
-//                taskService.create(new TaskDTO("task_200", "Description for task 200", project.getId(), userService.findByLogin("admin").getId()));
-//                taskService.create(new TaskDTO("task_300", "Description for task 300", project.getId(), userService.findByLogin("admin").getId()));
-//                taskService.create(new TaskDTO("task_400", "Description for task 400", project.getId(), userService.findByLogin("admin").getId()));
-//            }
-//
-//            for (ProjectDTO project : projectService.findAllByUserId(userService.findByLogin("user").getId())) {
-//                taskService.create(new TaskDTO("task_1", "Description for task 1", project.getId(), userService.findByLogin("user").getId()));
-//                taskService.create(new TaskDTO("task_2", "Description for task 2", project.getId(), userService.findByLogin("user").getId()));
-//                taskService.create(new TaskDTO("task_3", "Description for task 3", project.getId(), userService.findByLogin("user").getId()));
-//                taskService.create(new TaskDTO("task_4", "Description for task 4", project.getId(), userService.findByLogin("user").getId()));
-//            }
-//        } catch (DataValidateException e) {
-//            e.printStackTrace();
-//        }
-//    }
+    private void generateTestData(IServiceLocator serviceLocator) {
+        @NotNull final IProjectService projectService = serviceLocator.getProjectService();
+        @NotNull final ITaskService taskService = serviceLocator.getTaskService();
+        @NotNull final IUserService userService = serviceLocator.getUserService();
+        @NotNull final ISessionService sessionService = serviceLocator.getSessionService();
+
+        try {
+            projectService.create(new ProjectDTO("My_project_1", "Description for my project 1", userService.findByLogin("admin").getId()));
+            projectService.create(new ProjectDTO("My_project_2", "Description for my project 2", userService.findByLogin("admin").getId()));
+            projectService.create(new ProjectDTO("My_project_3", "Description for my project 3", userService.findByLogin("user").getId()));
+            projectService.create(new ProjectDTO("My_project_4", "Description for my project 4", userService.findByLogin("user").getId()));
+
+            for (ProjectDTO project : projectService.findAllByUserId(userService.findByLogin("admin").getId())) {
+                taskService.create(new TaskDTO("task_100", "Description for task 100", project.getId(), userService.findByLogin("admin").getId()));
+                taskService.create(new TaskDTO("task_200", "Description for task 200", project.getId(), userService.findByLogin("admin").getId()));
+                taskService.create(new TaskDTO("task_300", "Description for task 300", project.getId(), userService.findByLogin("admin").getId()));
+                taskService.create(new TaskDTO("task_400", "Description for task 400", project.getId(), userService.findByLogin("admin").getId()));
+            }
+
+            for (ProjectDTO project : projectService.findAllByUserId(userService.findByLogin("user").getId())) {
+                taskService.create(new TaskDTO("task_1", "Description for task 1", project.getId(), userService.findByLogin("user").getId()));
+                taskService.create(new TaskDTO("task_2", "Description for task 2", project.getId(), userService.findByLogin("user").getId()));
+                taskService.create(new TaskDTO("task_3", "Description for task 3", project.getId(), userService.findByLogin("user").getId()));
+                taskService.create(new TaskDTO("task_4", "Description for task 4", project.getId(), userService.findByLogin("user").getId()));
+            }
+        } catch (DataValidateException e) {
+            e.printStackTrace();
+        }
+    }
 }

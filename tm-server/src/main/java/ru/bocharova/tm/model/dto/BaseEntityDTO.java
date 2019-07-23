@@ -16,11 +16,17 @@ public class BaseEntityDTO extends AbstractEntityDTO implements Serializable {
     protected Date dateBegin = new Date();
 
     @Nullable
-    protected Date dateEnd = null;
+    protected Date dateEnd = new Date();
 
     @Nullable
     protected String userId = "";
 
     @Getter
     protected Status status = Status.PLANNED;
+
+    @Nullable
+    protected String name = null;
+
+    @Nullable
+    protected String description = null;
 }

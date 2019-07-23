@@ -3,6 +3,7 @@ package ru.bocharova.tm.model.dto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.jetbrains.annotations.NotNull;
 import org.jetbrains.annotations.Nullable;
 
 import java.io.Serializable;
@@ -12,7 +13,7 @@ import java.io.Serializable;
 @NoArgsConstructor
 public class TaskDTO extends BaseEntityDTO implements Serializable {
 
-    @Nullable
+    @NotNull
     private String projectId;
 
     public TaskDTO(

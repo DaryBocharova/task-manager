@@ -17,7 +17,7 @@ import java.io.Serializable;
 @Table(name = "app_task")
 public class Task extends BaseEntity implements Serializable {
 
-    @Nullable
+    @NotNull
     @ManyToOne
     @JoinColumn(name = "project_id")
     private Project project;

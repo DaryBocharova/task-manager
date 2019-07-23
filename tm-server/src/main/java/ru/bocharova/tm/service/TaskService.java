@@ -39,7 +39,7 @@ public final class TaskService implements ITaskService {
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
-            throw new DataValidateException(e.getMessage());
+            e.printStackTrace();
         } finally {
             entityManager.close();
         }
