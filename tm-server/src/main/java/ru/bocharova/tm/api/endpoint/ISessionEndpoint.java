@@ -24,6 +24,6 @@ public interface ISessionEndpoint extends IEndPoint {
             AuthenticationSecurityException, DataValidateException;
 
     @WebMethod
-    void validateAdminSession(@WebParam(name = "session") @Nullable final SessionDTO sessionDTO) throws
+    void validateAdminSession(@WebParam(name = "session") final SessionDTO sessionDTO) throws
             AuthenticationSecurityException, DataValidateException;
 }

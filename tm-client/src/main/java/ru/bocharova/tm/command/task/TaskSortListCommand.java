@@ -5,8 +5,8 @@ import ru.bocharova.tm.api.endpoint.AuthenticationSecurityException_Exception;
 import ru.bocharova.tm.api.service.ITerminalService;
 import ru.bocharova.tm.command.AbstractCommand;
 import ru.bocharova.tm.endpoint.TaskEndpoint;
-import ru.bocharova.tm.entity.Session;
-import ru.bocharova.tm.entity.Task;
+import ru.bocharova.tm.model.entity.Session;
+import ru.bocharova.tm.model.entity.Task;
 import ru.bocharova.tm.exception.AuthenticationSecurityException;
 
 import java.util.Collection;

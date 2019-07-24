@@ -3,21 +3,20 @@ package ru.bocharova.tm.api.endpoint;
 
 import javax.xml.bind.annotation.XmlAccessType;
 import javax.xml.bind.annotation.XmlAccessorType;
-import javax.xml.bind.annotation.XmlElement;
 import javax.xml.bind.annotation.XmlType;
 
 
 /**
- * <p>Java class for findUserByLoginResponse complex type.
+ * <p>Java class for validateAdminSession complex type.
  * 
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
- * &lt;complexType name="findUserByLoginResponse"&gt;
+ * &lt;complexType name="validateAdminSession"&gt;
  *   &lt;complexContent&gt;
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType"&gt;
  *       &lt;sequence&gt;
- *         &lt;element name="return" type="{http://endpoint.api.tm.bocharova.ru/}userDTO" minOccurs="0"/&gt;
+ *         &lt;element name="session" type="{http://endpoint.api.tm.bocharova.ru/}sessionDTO" minOccurs="0"/&gt;
  *       &lt;/sequence&gt;
  *     &lt;/restriction&gt;
  *   &lt;/complexContent&gt;
@@ -27,36 +26,35 @@ import javax.xml.bind.annotation.XmlType;
  * 
  */
 @XmlAccessorType(XmlAccessType.FIELD)
-@XmlType(name = "findUserByLoginResponse", propOrder = {
-    "_return"
+@XmlType(name = "validateAdminSession", propOrder = {
+    "session"
 })
-public class FindUserByLoginResponse {
+public class ValidateAdminSession {
 
-    @XmlElement(name = "return")
-    protected UserDTO _return;
+    protected SessionDTO session;
 
     /**
-     * Gets the value of the return property.
+     * Gets the value of the session property.
      * 
      * @return
      *     possible object is
-     *     {@link UserDTO }
+     *     {@link SessionDTO }
      *     
      */
-    public UserDTO getReturn() {
-        return _return;
+    public SessionDTO getSession() {
+        return session;
     }
 
     /**
-     * Sets the value of the return property.
+     * Sets the value of the session property.
      * 
      * @param value
      *     allowed object is
-     *     {@link UserDTO }
+     *     {@link SessionDTO }
      *     
      */
-    public void setReturn(UserDTO value) {
-        this._return = value;
+    public void setSession(SessionDTO value) {
+        this.session = value;
     }
 
 }

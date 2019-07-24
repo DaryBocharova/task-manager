@@ -34,7 +34,7 @@ public final class UserService implements IUserService {
             entityManager.getTransaction().commit();
         } catch (Exception e) {
             entityManager.getTransaction().rollback();
-            throw new DataValidateException(e.getMessage());
+            e.printStackTrace();
         } finally {
             entityManager.close();
         }
