@@ -1,0 +1,17 @@
+target/
+
+out/
+
+bin/
+
+.idea/
+
+*.iml
+
+buildNumber.properties
+
+*.ser
+
+*.json
+
+docs/
