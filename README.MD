@@ -1,42 +1,36 @@
-   ### TASK-MANAGER
---------------------------------------------------------------------------------------
-Task-manager - console application allows you to manage projects and tasks. 
-###   SOFTWARE:
+Task Manager
+============
 
-```
+Task Manager - console application allows you to manage projects and tasks.
 
-- IntelliJ IDEA 2018.3.1
-- Build #IC-183.4588.61
-- Windows 10.0
 
-```
-###   :
+TECHNOLOGY STACK
+----------------
 
-```
+        Java 1.8 SE
+        Maven 3.6.0
 
-- Java 8
-- JRE: 1.8.0
-- JVM: OpenJDK 64-Bit Server VM by JetBrains s.r.o
 
-```
-###    :
+REQUIREMENTS
+------------
 
-```
+The minimum requirement by Task Manager is installed JRE 1.8
 
-DARIA BOCHAROVA, E-MAIL: D.BOCHAROVA@I-TECO.RU
 
-Github: DaryaBocharova
+QUICK START
+-----------
+For assembling project using follow commands:
 
-```
-###    :
+        $ mvn clean package                                                         (Linux)
+        mvn clean package                                                          (Windows)
 
-```
-mvn install                                                (WINDOWS) 
+For run application using follow commands:
 
-```
-###    :
+        $ java -jar taskmanager/target/task-manager-1.0-SNAPSHOT.jar                (Linux)
+        java -jar taskmanager\target\task-manager-1.0-SNAPSHOT.jar                 (Windows)
 
-```
-java -jar taskmanager\target\task-manager-1.0-SNAPSHOT.jar    (WINDOWS)
-```
 
+Developers
+-----------
+
+       Darya Bocharova           d.bocharova@i-teco.ru
