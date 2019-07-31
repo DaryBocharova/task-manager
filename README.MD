@@ -27,7 +27,7 @@ For assembling project using follow commands:
 For run application using follow commands:
 
         $ java -jar taskmanager/target/task-manager-1.0.0.jar                (Linux)
-        java -jar taskmanager\target\task-manager-1.0.0T.jar                 (Windows)
+        java -jar taskmanager\target\task-manager-1.0.0.jar                 (Windows)
 
 
 Developers
