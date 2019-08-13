@@ -20,8 +20,7 @@ public interface ITaskService extends IAbstractEntityService<Task> {
                  @NotNull final String userId
     ) throws DataValidateException;
 
-    Task remove(@NotNull final String id,
-                @NotNull final String userId
+    Task remove(@NotNull final String id
     ) throws DataValidateException;
 
     Collection<Task> findAllByProjectId(@NotNull final String id,

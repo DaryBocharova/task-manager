@@ -59,8 +59,7 @@ public final class TaskService extends AbstractEntityService<Task, ITaskReposito
     }
 
     @Override
-    public Task remove(@NotNull String id,
-                       @NotNull String userId
+    public Task remove(@NotNull String id
     ) throws DataValidateException {
         if (!DataValidator.validateString(id, userId)) return null;
         return repository.remove(id, userId);

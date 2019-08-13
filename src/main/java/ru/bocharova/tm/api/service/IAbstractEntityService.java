@@ -13,7 +13,7 @@ public interface IAbstractEntityService<E> {
             @NotNull final String id) throws DataValidateException;
 
     E remove(
-            @NotNull final String id, String loggedUserId) throws DataValidateException;
+            @NotNull final String id) throws DataValidateException;
 
     Collection<E> findAll();
 

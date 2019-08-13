@@ -133,7 +133,7 @@ public class TaskController {
             @NotNull final User loggerUser = (User) session.getAttribute(FieldConst.USER);
             projectId = request.getParameter(FieldConst.PROJECT_ID);
             @Nullable final String taskId = request.getParameter(FieldConst.TASK_ID);
-            taskService.remove(taskId, loggerUser.getId());
+            taskService.remove(taskId);
             if (projectId == null || projectId.isEmpty() || "null".equals(projectId)) {
                 return "redirect:/task/list";
             }

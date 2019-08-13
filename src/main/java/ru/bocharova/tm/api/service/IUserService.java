@@ -19,8 +19,7 @@ public interface IUserService extends IAbstractEntityService<User> {
                  @NotNull final String userId
     ) throws DataValidateException;
 
-    User remove(@NotNull final String id,
-                @NotNull final String userId
+    User remove(@NotNull final String id
     ) throws DataValidateException;
 
     User authenticationUser(String login, String password) throws AuthenticationSecurityException, DataValidateException;

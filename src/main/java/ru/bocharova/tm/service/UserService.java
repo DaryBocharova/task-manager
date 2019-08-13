@@ -12,6 +12,7 @@ import ru.bocharova.tm.exception.AuthenticationSecurityException;
 import ru.bocharova.tm.exception.DataValidateException;
 import ru.bocharova.tm.model.entity.User;
 import ru.bocharova.tm.util.DataValidator;
+import ru.bocharova.tm.util.FieldConst;
 import ru.bocharova.tm.util.HashUtil;
 
 @Service
@@ -36,7 +37,7 @@ public final class UserService extends AbstractEntityService<User, IUserReposito
                        @NotNull final String role) throws DataValidateException {
         if (!DataValidator.validateString(id, login, password, role)) return null;
         if (Role.valueOf(role) == null) return null;
-        User user = new User(login, HashUtil.md5(password), Role.valueOf(role));
+        User user = new User(login, HashUtil.md5(password), request.getParameter(FieldConst.NAME), request.getParameter(FieldConst.DESCRIPTION), Role.valueOf(role));
         user.setId(id);
         return repository.persist(user);
     }
@@ -50,8 +51,7 @@ public final class UserService extends AbstractEntityService<User, IUserReposito
     }
 
     @Override
-    public User remove(@NotNull String id,
-                       @NotNull String userId
+    public User remove(@NotNull String id
     ) throws DataValidateException {
         if (!DataValidator.validateString(id, userId)) return null;
         return repository.remove(id);

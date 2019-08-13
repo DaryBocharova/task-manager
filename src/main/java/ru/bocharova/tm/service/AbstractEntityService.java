@@ -29,7 +29,7 @@ public abstract class AbstractEntityService<E extends AbstractEntity, R extends 
     }
 
     @Override
-    public E remove(@NotNull final String id, String loggedUserId) throws DataValidateException {
+    public E remove(@NotNull final String id) throws DataValidateException {
         if (!DataValidator.validateString(id)) return null;
         return repository.remove(id);
     }

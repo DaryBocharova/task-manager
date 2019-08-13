@@ -23,7 +23,7 @@ public class User extends AbstractEntity implements Serializable {
     public User(
             @Nullable final String login,
             @Nullable final String password,
-            @Nullable final Role role) {
+            String parameter, String requestParameter, @Nullable final Role role) {
         this.login = login;
         this.password = password;
         this.name = name;

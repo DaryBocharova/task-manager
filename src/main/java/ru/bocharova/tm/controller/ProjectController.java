@@ -103,7 +103,7 @@ public class ProjectController {
             sessionService.validate(session);
             @Nullable final String id = request.getParameter(FieldConst.PROJECT_ID);
             @NotNull final User loggedUser = (User) session.getAttribute(FieldConst.USER);
-            projectService.remove(id, loggedUser.getId());
+            projectService.remove(id);
         } catch (AuthenticationSecurityException e) {
             response.sendError(HttpServletResponse.SC_FORBIDDEN, e.getMessage());
         } catch (DataValidateException e) {
